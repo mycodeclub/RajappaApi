@@ -1,4 +1,4 @@
-namespace RajappaBackendApi
+namespace MyHSE_Backend
 {
     public class WeatherForecast
     {

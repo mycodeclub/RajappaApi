@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.8.34205.153
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RajappaBackendApi", "RajappaBackendApi\RajappaBackendApi.csproj", "{8CAC70BB-B075-4AE7-9C2A-8E1AF569BA2E}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyHSE_Backend", "MyHSE_Backend\MyHSE_Backend.csproj", "{09602757-BE99-4BAA-A9A1-2A5674E4471A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -11,15 +11,15 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{8CAC70BB-B075-4AE7-9C2A-8E1AF569BA2E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{8CAC70BB-B075-4AE7-9C2A-8E1AF569BA2E}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{8CAC70BB-B075-4AE7-9C2A-8E1AF569BA2E}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{8CAC70BB-B075-4AE7-9C2A-8E1AF569BA2E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{09602757-BE99-4BAA-A9A1-2A5674E4471A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{09602757-BE99-4BAA-A9A1-2A5674E4471A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{09602757-BE99-4BAA-A9A1-2A5674E4471A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{09602757-BE99-4BAA-A9A1-2A5674E4471A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {C356746E-380C-4559-A925-50C9C54A820C}
+		SolutionGuid = {A33FFC0F-6168-43FA-98B5-E8D7D71FAE34}
 	EndGlobalSection
 EndGlobal
