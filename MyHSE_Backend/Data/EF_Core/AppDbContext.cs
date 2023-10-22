@@ -1,5 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using MyHSE_Backend.Models.User;
+using MyHSE_Backend.Data.DbModels.User;
 
 namespace MyHSE_Backend.Data.EF_Core
 {

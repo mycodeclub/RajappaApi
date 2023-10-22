@@ -1,4 +1,4 @@
-﻿using MyHSE_Backend.Models.User;
+﻿using MyHSE_Backend.Data.DbModels;
 
 namespace MyHSE_Backend.Common
 {

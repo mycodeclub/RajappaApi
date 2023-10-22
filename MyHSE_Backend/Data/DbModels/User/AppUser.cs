@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations.Schema;
 using System.ComponentModel.DataAnnotations;
 
-namespace MyHSE_Backend.Models.User
+namespace MyHSE_Backend.Data.DbModels.User
 {
     public class AppUser
     {

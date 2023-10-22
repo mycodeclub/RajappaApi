@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace MyHSE_Backend.Models.User
+namespace MyHSE_Backend.Data.ViewModels.User
 {
     public class UserRegistrationVM
     {

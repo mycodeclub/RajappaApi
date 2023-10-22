@@ -5,8 +5,8 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using MyHSE_Backend.Data.DbModels.User;
 using MyHSE_Backend.Data.EF_Core;
-using MyHSE_Backend.Models.User;
 
 namespace MyHSE_Backend.Controllers
 {

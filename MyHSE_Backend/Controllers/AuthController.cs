@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using MyHSE_Backend.Data.EF_Core;
-using MyHSE_Backend.Models.User;
+using MyHSE_Backend.Data.DbModels;
 using System;
 
 namespace MyHSE_Backend.Controllers
