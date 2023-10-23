@@ -151,6 +151,6 @@ namespace MyHSE_Backend.Data.DbModels.User
         public string GRADE { get; set; } = string.Empty;
 
         public string PasswordHash { get; set; } = string.Empty;
-        public string Roles { get; set; }
+        public string Roles { get; set; } = string.Empty;
     }
 }

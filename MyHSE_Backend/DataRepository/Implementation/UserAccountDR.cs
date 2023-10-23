@@ -120,7 +120,16 @@ namespace MyHSE_Backend.DataRepository.Implementation
                 };
                 _context.AppUsers.Add(appUser);
                 try { await _context.SaveChangesAsync(); }
-                catch (Exception ex) { var msg = ex.Message; }
+                catch (Exception ex)
+                {
+                    var msg = ex.Message;
+                    if (response.ErrorMessages == null)
+                        response.ErrorMessages = new List<string>();
+                    response.ErrorMessages.Add(ex.Message);
+                    response.ErrorMessages.Add(ex.InnerException.Message);
+                    response.ErrorMessages.Add(ex.StackTrace);
+                    return response;
+                }
                 response.UniqueId = appUser.Id;
                 response.IsCreated = true;
                 return response;
