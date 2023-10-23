@@ -38,7 +38,7 @@ namespace MyHSE_Backend.DataRepository.Implementation
             else response.ErrorMessages = new List<string>() { "Invalid Credentials " };
             return response;
         }
-        public async Task<IEnumerable<AppUser>> GetAllUsers()
+        public async Task<IEnumerable<Data.DbModels.User.AppUser>> GetAllUsers()
         {
             IEnumerable<AppUser> users;
             users = await _context.AppUsers.ToListAsync();
@@ -49,7 +49,7 @@ namespace MyHSE_Backend.DataRepository.Implementation
 
         public async Task<bool> IfUserExists(string email)
         {
-            return await _context.AppUsers.AnyAsync(u => u.EmailId.Equals(email));
+            return await _context.AppUsers.AnyAsync(u => u.EMAILID.Equals(email));
         }
         private async Task<bool> ValidateCredentials(string email, string password)
         {
@@ -62,7 +62,7 @@ namespace MyHSE_Backend.DataRepository.Implementation
             AppUser appUser = null;
             try
             {
-                var result = await _context.AppUsers.Where(u => u.EmailId.Equals(email)).FirstOrDefaultAsync();
+                var result = await _context.AppUsers.Where(u => u.EMAILID.Equals(email)).FirstOrDefaultAsync();
                 appUser = result;
             }
             catch (Exception ex)
@@ -81,10 +81,10 @@ namespace MyHSE_Backend.DataRepository.Implementation
 
             var _appUser = await GetUserByEmail(email);
             var userClaims = _appUser.Roles.Split(",").Select(r => new Claim(ClaimTypes.Role, r)).ToList();
-            userClaims.Add(new Claim(ClaimTypes.Name, _appUser.EmailId));
-            userClaims.Add(new Claim(ClaimTypes.Email, _appUser.EmailId));
+            userClaims.Add(new Claim(ClaimTypes.Name, _appUser.EMAILID));
+            userClaims.Add(new Claim(ClaimTypes.Email, _appUser.EMAILID));
             userClaims.Add(new Claim(ClaimTypes.NameIdentifier, _appUser.Id.ToString()));
-            userClaims.Add(new Claim(ClaimTypes.Sid, _appUser.LoginId));
+            userClaims.Add(new Claim(ClaimTypes.Sid, _appUser.Login));
 
             var securityKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_config["JwtSettings:Key"]));
             var cred = new SigningCredentials(securityKey, SecurityAlgorithms.HmacSha256Signature);
@@ -113,9 +113,9 @@ namespace MyHSE_Backend.DataRepository.Implementation
             {
                 var appUser = new AppUser()
                 {
-                    CreatedOn = DateTime.Now,
-                    LoginId = user.Email,
-                    EmailId = user.Email,
+                    CREATEDON = DateTime.Now,
+                    Login = user.Email,
+                    EMAILID = user.Email,
                     PasswordHash = BCrypt.Net.BCrypt.HashPassword(user.Password),
                 };
                 _context.AppUsers.Add(appUser);

@@ -15,7 +15,9 @@ namespace MyHSE_Backend.Data.EF_Core
             if (!optionsBuilder.IsConfigured) { }
         }
 
+        //        public DbSet<AppUser> AppUsers { get; set; }
         public DbSet<AppUser> AppUsers { get; set; }
+        public DbSet<userGroups> userGroups { get; set; }
 
         //[NotMapped]
         //public async Task<int> CallSp(int par1, int par2)
