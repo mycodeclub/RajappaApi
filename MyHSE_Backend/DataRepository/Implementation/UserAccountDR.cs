@@ -105,21 +105,26 @@ namespace MyHSE_Backend.DataRepository.Implementation
             var response = new UserRegistrationResponse();
 
             if (await IfUserExists(user.Email))
-                response.ErrorMessages = new List<string>() { "User already exist with given Id, please try with different email" };
-
-            var appUser = new AppUser()
             {
-                CreatedOn = DateTime.Now,
-                LoginId = user.Email,
-                EmailId = user.Email,
-                PasswordHash = BCrypt.Net.BCrypt.HashPassword(user.Password),
-            };
-            _context.AppUsers.Add(appUser);
-            try { await _context.SaveChangesAsync(); }
-            catch (Exception ex) { var msg = ex.Message; }
-            response.UniqueId = appUser.Id;
-            response.IsCreated = true;
-            return response;
+                response.ErrorMessages = new List<string>() { "User already exist with given Id, please try with different email" };
+                return response;
+            }
+            else
+            {
+                var appUser = new AppUser()
+                {
+                    CreatedOn = DateTime.Now,
+                    LoginId = user.Email,
+                    EmailId = user.Email,
+                    PasswordHash = BCrypt.Net.BCrypt.HashPassword(user.Password),
+                };
+                _context.AppUsers.Add(appUser);
+                try { await _context.SaveChangesAsync(); }
+                catch (Exception ex) { var msg = ex.Message; }
+                response.UniqueId = appUser.Id;
+                response.IsCreated = true;
+                return response;
+            }
         }
     }
 }
