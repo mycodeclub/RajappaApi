@@ -1,8 +1,8 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace MyHSE_Backend.Data.Settings
+namespace MyHSE_Backend.Data.DbModels.Settings
 {
-    public class Units
+    public class Purchasing_Groups
     {
 
 
@@ -11,11 +11,9 @@ namespace MyHSE_Backend.Data.Settings
         public Guid Id { get; set; }
 
 
+        [Display(Name = "Purchasing Group")]
+        public string PDGRP { get; set; } = string.Empty;
 
-        [Display(Name = "Unit Of Measurement")]
-        public string UOMID { get; set; } = string.Empty;
-
-        
         [Display(Name = "Name")]
         public string NAME { get; set; } = string.Empty;
     }

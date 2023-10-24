@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace MyHSE_Backend.Data.Settings
+namespace MyHSE_Backend.Data.DbModels.Settings
 {
     public class Business_Objects
     {
@@ -20,7 +20,7 @@ namespace MyHSE_Backend.Data.Settings
 
 
         [Display(Name = "Active")]
-        public Boolean ACTIVE { get; set; } 
+        public bool ACTIVE { get; set; }
 
 
 

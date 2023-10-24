@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace MyHSE_Backend.Data.Settings
+namespace MyHSE_Backend.Data.DbModels.Settings
 {
     /// <summary>
     ///  this table is from Table3 Sheet from provided excell file. 
@@ -69,7 +69,7 @@ namespace MyHSE_Backend.Data.Settings
         [Display(Name = "House Number 2")]
         public string HOUSE_NUM2 { get; set; } = string.Empty;
 
- 
+
         [Display(Name = "Street 2")]
         public string STREET2 { get; set; } = string.Empty;
 

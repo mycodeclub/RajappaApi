@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace MyHSE_Backend.Data.Settings
+namespace MyHSE_Backend.Data.DbModels.Settings
 {
     public class Plants
     {
@@ -18,9 +18,9 @@ namespace MyHSE_Backend.Data.Settings
         [Display(Name = "Organization ID")]
         public string ORGID { get; set; } = string.Empty;
 
-        
+
         [Display(Name = "Name")]
-         public string NAME { get; set; } = string.Empty;
+        public string NAME { get; set; } = string.Empty;
 
 
         [Display(Name = "Name 1")]
