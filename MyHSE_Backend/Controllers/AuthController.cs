@@ -59,7 +59,7 @@ namespace MyHSE_Backend.Controllers
         //    else return BadRequest("Invalid Data");
         //}
 
-        [HttpPost("UserRegistration")]
+        [HttpPost("BasicRegistration")]
         public async Task<ActionResult<UserRegistrationResponse>> Register(UserRegistrationVM _user)
         {
             if (ModelState.IsValid)
@@ -78,5 +78,27 @@ namespace MyHSE_Backend.Controllers
             }
             return BadRequest("Invalid Input");
         }
+
+
+        [HttpPost("FullRegistration")]
+        public async Task<ActionResult<UserRegistrationResponse>> FullRegister(AppUser _user)
+        {
+            if (ModelState.IsValid)
+            {
+                try
+                {
+                    var result = await userAccountService.UserRegistrationWithFullDetail(_user);
+                    if (result != null && result.IsCreated)
+                        return Ok(result);
+                    else if (result.ErrorMessages != null && result.ErrorMessages.Count > 0)
+                        return BadRequest(string.Join(",", result.ErrorMessages));
+                    else
+                        return BadRequest("Something went wrong, please try again");
+                }
+                catch (Exception ex) { return BadRequest(ex.Message); }
+            }
+            return BadRequest("Invalid Input");
+        }
+
     }
-}
+    }

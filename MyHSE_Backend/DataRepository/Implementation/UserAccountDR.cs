@@ -135,5 +135,28 @@ namespace MyHSE_Backend.DataRepository.Implementation
                 return response;
             }
         }
+
+        public async Task<UserRegistrationResponse> UserRegistrationWithFullDetail(AppUser user)
+        {
+            var response = new UserRegistrationResponse();
+
+            if (await IfUserExists(user.EMAILID))
+            {
+                response.ErrorMessages = new List<string>() { "User already exist with given Id, please try with different email" };
+                return response;
+            }
+            else
+            {
+                user.PasswordHash = BCrypt.Net.BCrypt.HashPassword(user.PASSWORD);
+                _context.AppUsers.Add(user);
+                try { await _context.SaveChangesAsync(); }
+                catch (Exception ex) { var msg = ex.Message; }
+                response.UniqueId = user.Id;
+                response.IsCreated = true;
+                return response;
+
+
+            }
+        }
     }
 }
