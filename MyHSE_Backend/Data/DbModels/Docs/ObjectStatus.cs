@@ -1,35 +1,32 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace MyHSE_Backend.Data.DbModels.User
+namespace MyHSE_Backend.Data.DbModels.Docs
 {/// <summary>
-/// User Roles
+/// Object Status
 /// </summary>
+    public class Object_Status
     {
         [Key]
         [Display(Name = "Unique ID")]
         public Guid Id { get; set; }
 
-        [Display(Name = "User ID")]
-        public string Login { get; set; } = string.Empty;
+        [Display(Name = "Business Object")]
+        public string BUSOBJTYPE { get; set; } = string.Empty;
 
-        [Display(Name = "Role Unique ID")]
-        public string ROLEID { get; set; } = string.Empty;
+        [Display(Name = "Object ID")]
+        public string OBJID { get; set; } = string.Empty;
 
+        [Display(Name = "Status")]
+        public string STATUS { get; set; } = string.Empty;
 
+        [Display(Name = "Name")]
+        public string NAME { get; set; } = string.Empty;
 
-        [Display(Name = "Role ID")]
-        public string ROLE { get; set; } = string.Empty;
+        [Display(Name = "Active")]
+        public bool ACTIVE { get; set; } 
 
-
-        [Display(Name = "Valid From Date")]
-        public string VALIDFROM { get; set; } = string.Empty;
-
-
-        [Display(Name = "Valid To Date")]
-        public string VALIDTO { get; set; } = string.Empty;
-
-
-
+        [Display(Name = "System")]
+        public bool SYST { get; set; } 
 
         [Display(Name = "Created By")]
         public string CREATEDBY { get; set; } = string.Empty;
@@ -40,7 +37,6 @@ namespace MyHSE_Backend.Data.DbModels.User
         [Display(Name = "Created Time")]
         public string CREATEDTIME { get; set; } = string.Empty;
 
-
         [Display(Name = "Changed By")]
         public string CHANGEDBY { get; set; } = string.Empty;
 
@@ -49,5 +45,6 @@ namespace MyHSE_Backend.Data.DbModels.User
 
         [Display(Name = "Changed Time")]
         public string CHANGEDTIME { get; set; } = string.Empty;
+
     }
 }

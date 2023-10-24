@@ -2,7 +2,10 @@
 using static Azure.Core.HttpHeader;
 
 namespace MyHSE_Backend.Data.DbModels.User
-{
+{/// <summary>
+/// User Groups
+/// 
+/// </summary>
     public class UserGroups
     {
         [Key]

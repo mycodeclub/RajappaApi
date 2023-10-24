@@ -20,14 +20,14 @@ namespace MyHSE_Backend.Controllers
 
         // GET: api/AppUsers
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<AppUser>>> GetAppUsers()
+        public async Task<ActionResult<IEnumerable<Users>>> GetAppUsers()
         {
             return await _context.AppUsers.ToListAsync();
         }
 
         // GET: api/AppUsers/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<AppUser>> GetAppUser(Guid id)
+        public async Task<ActionResult<Users>> GetAppUser(Guid id)
         {
             var appUser = await _context.AppUsers.FindAsync(id);
 

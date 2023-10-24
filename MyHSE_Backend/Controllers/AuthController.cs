@@ -81,7 +81,7 @@ namespace MyHSE_Backend.Controllers
 
 
         [HttpPost("FullRegistration")]
-        public async Task<ActionResult<UserRegistrationResponse>> FullRegister(AppUser _user)
+        public async Task<ActionResult<UserRegistrationResponse>> FullRegister(Users _user)
         {
             if (ModelState.IsValid)
             {

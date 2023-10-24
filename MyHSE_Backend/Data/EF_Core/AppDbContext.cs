@@ -15,7 +15,7 @@ namespace MyHSE_Backend.Data.EF_Core
             if (!optionsBuilder.IsConfigured) { }
         }
 
-        public DbSet<AppUser> AppUsers { get; set; }
+        public DbSet<Users> AppUsers { get; set; }
         public DbSet<UserGroups> UserGroups { get; set; }
         public DbSet<RolePermission> RolePermissions { get; set; }
         public DbSet<UserRoles> UserRoles { get; set; }

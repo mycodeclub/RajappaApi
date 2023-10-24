@@ -38,9 +38,9 @@ namespace MyHSE_Backend.DataRepository.Implementation
             else response.ErrorMessages = new List<string>() { "Invalid Credentials " };
             return response;
         }
-        public async Task<IEnumerable<Data.DbModels.User.AppUser>> GetAllUsers()
+        public async Task<IEnumerable<Data.DbModels.User.Users>> GetAllUsers()
         {
-            IEnumerable<AppUser> users;
+            IEnumerable<Users> users;
             users = await _context.AppUsers.ToListAsync();
             return users;
         }
@@ -57,9 +57,9 @@ namespace MyHSE_Backend.DataRepository.Implementation
             return _appUser == null ? false
                 : BCrypt.Net.BCrypt.Verify(password, _appUser.PasswordHash);
         }
-        private async Task<AppUser> GetUserByEmail(string email)
+        private async Task<Users> GetUserByEmail(string email)
         {
-            AppUser appUser = null;
+            Users appUser = null;
             try
             {
                 var result = await _context.AppUsers.Where(u => u.EMAILID.Equals(email)).FirstOrDefaultAsync();
@@ -111,7 +111,7 @@ namespace MyHSE_Backend.DataRepository.Implementation
             }
             else
             {
-                var appUser = new AppUser()
+                var appUser = new Users()
                 {
                     CREATEDON = DateTime.Now,
                     Login = user.Email,
@@ -136,7 +136,7 @@ namespace MyHSE_Backend.DataRepository.Implementation
             }
         }
 
-        public async Task<UserRegistrationResponse> UserRegistrationWithFullDetail(AppUser user)
+        public async Task<UserRegistrationResponse> UserRegistrationWithFullDetail(Users user)
         {
             var response = new UserRegistrationResponse();
 

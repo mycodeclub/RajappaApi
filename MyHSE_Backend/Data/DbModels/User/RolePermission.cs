@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
 namespace MyHSE_Backend.Data.DbModels.User
-{
+{/// <summary>
 
     /// <summary>
     ///  Permissions
