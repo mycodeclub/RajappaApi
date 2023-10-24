@@ -18,6 +18,10 @@ namespace MyHSE_Backend.Data.EF_Core
         public DbSet<AppUser> AppUsers { get; set; }
         public DbSet<UserGroups> UserGroups { get; set; }
         public DbSet<RolePermission> RolePermissions { get; set; }
+        public DbSet<UserRoles> UserRoles { get; set; }
+        public DbSet<Roles> Roles { get; set; }
+       
+
 
     }
 }
