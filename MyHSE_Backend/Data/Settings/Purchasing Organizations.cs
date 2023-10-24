@@ -13,7 +13,7 @@ namespace MyHSE_Backend.Data.Settings
 
 
         [Display(Name = "Purchasing Organization")]
-        public string PDORG { get; set; } = string.Empty;.
+        public string PDORG { get; set; } = string.Empty;
 
         
         [Display(Name = "Name")]

@@ -27,7 +27,7 @@ namespace MyHSE_Backend.Data.Settings
 
 
 
-        [Display(Name = "Characteristic ID)]
+        [Display(Name = "Characteristic ID")]
         public string CHARID { get; set; } = string.Empty;
 
 

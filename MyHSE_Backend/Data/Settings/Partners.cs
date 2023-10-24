@@ -34,13 +34,13 @@ namespace MyHSE_Backend.Data.Settings
         [Display(Name = "Partner Function")]
         public string PARFUNC { get; set; } = string.Empty;
 
-        
+
 
         [Display(Name = "Partner Function Name")]
         public string BPARFUNCT { get; set; } = string.Empty;
 
 
-       
+
 
         [Display(Name = "Custodian?")]
         public string CUSTODIAN { get; set; } = string.Empty;
@@ -69,16 +69,11 @@ namespace MyHSE_Backend.Data.Settings
         [Display(Name = "House Number 2")]
         public string HOUSE_NUM2 { get; set; } = string.Empty;
 
-
-
-        [Display(Name = "Street")]
-        public string STREET { get; set; } = string.Empty;
-
-
+ 
         [Display(Name = "Street 2")]
         public string STREET2 { get; set; } = string.Empty;
 
-        
+
         [Display(Name = "Street 3")]
         public string STREET3 { get; set; } = string.Empty;
 
@@ -86,11 +81,6 @@ namespace MyHSE_Backend.Data.Settings
 
         [Display(Name = "Street 4")]
         public string STREET4 { get; set; } = string.Empty;
-
-
-        [Display(Name = "Street 4")]
-        public string STREET4 { get; set; } = string.Empty;
-
 
 
         [Display(Name = "Landmark")]

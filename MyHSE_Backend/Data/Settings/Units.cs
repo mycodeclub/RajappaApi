@@ -13,7 +13,7 @@ namespace MyHSE_Backend.Data.Settings
 
 
         [Display(Name = "Unit Of Measurement")]
-        public string UOMID { get; set; } = string.Empty;.
+        public string UOMID { get; set; } = string.Empty;
 
         
         [Display(Name = "Name")]

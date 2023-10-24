@@ -7,7 +7,7 @@ namespace MyHSE_Backend.Data.Settings
 
         [Key]
         [Display(Name = "Unique ID")]
-        public Guid ID { get; set;
+        public Guid ID { get; set; }
 
         [Display(Name = "Business Module")]
         public string BUSMTYPE { get; set; } = string.Empty;
