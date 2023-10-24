@@ -2,7 +2,7 @@
 
 namespace MyHSE_Backend.Data.DbModels.User
 {
-    public class userRoles
+    public class UserRoles
     {
         [Key]
         [Display(Name = "Unique ID")]

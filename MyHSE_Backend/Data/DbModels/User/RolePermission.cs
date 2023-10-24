@@ -2,14 +2,18 @@
 
 namespace MyHSE_Backend.Data.DbModels.User
 {
-    public class Permissions
+
+    /// <summary>
+    ///  Permissions
+    /// </summary>
+    public class RolePermission
     {
         [Key]
         [Display(Name = "Unique ID")]
         public Guid Id { get; set; }
 
         [Display(Name = "Role Unique ID")]
-        public string ROLEID  { get; set; } = string.Empty;
+        public string ROLEID { get; set; } = string.Empty;
 
 
         [Display(Name = "Role ID")]

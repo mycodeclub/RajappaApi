@@ -12,35 +12,35 @@ namespace MyHSE_Backend.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class userGroupsController : ControllerBase
+    public class UserGroupsController : ControllerBase
     {
         private readonly AppDbContext _context;
 
-        public userGroupsController(AppDbContext context)
+        public UserGroupsController(AppDbContext context)
         {
             _context = context;
         }
 
         // GET: api/userGroups
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<userGroups>>> GetuserGroups()
+        public async Task<ActionResult<IEnumerable<UserGroups>>> GetUserGroups()
         {
-          if (_context.userGroups == null)
+          if (_context.UserGroups == null)
           {
               return NotFound();
           }
-            return await _context.userGroups.ToListAsync();
+            return await _context.UserGroups.ToListAsync();
         }
 
         // GET: api/userGroups/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<userGroups>> GetuserGroups(Guid id)
+        public async Task<ActionResult<UserGroups>> GetuserGroups(Guid id)
         {
-          if (_context.userGroups == null)
+          if (_context.UserGroups == null)
           {
               return NotFound();
           }
-            var userGroups = await _context.userGroups.FindAsync(id);
+            var userGroups = await _context.UserGroups.FindAsync(id);
 
             if (userGroups == null)
             {
@@ -53,7 +53,7 @@ namespace MyHSE_Backend.Controllers
         // PUT: api/userGroups/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutuserGroups(Guid id, userGroups userGroups)
+        public async Task<IActionResult> PutuserGroups(Guid id, UserGroups userGroups)
         {
             if (id != userGroups.Id)
             {
@@ -84,13 +84,13 @@ namespace MyHSE_Backend.Controllers
         // POST: api/userGroups
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
-        public async Task<ActionResult<userGroups>> PostuserGroups(userGroups userGroups)
+        public async Task<ActionResult<UserGroups>> PostuserGroups(UserGroups userGroups)
         {
-          if (_context.userGroups == null)
+          if (_context.UserGroups == null)
           {
               return Problem("Entity set 'AppDbContext.userGroups'  is null.");
           }
-            _context.userGroups.Add(userGroups);
+            _context.UserGroups.Add(userGroups);
             await _context.SaveChangesAsync();
 
             return CreatedAtAction("GetuserGroups", new { id = userGroups.Id }, userGroups);
@@ -100,17 +100,17 @@ namespace MyHSE_Backend.Controllers
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteuserGroups(Guid id)
         {
-            if (_context.userGroups == null)
+            if (_context.UserGroups == null)
             {
                 return NotFound();
             }
-            var userGroups = await _context.userGroups.FindAsync(id);
+            var userGroups = await _context.UserGroups.FindAsync(id);
             if (userGroups == null)
             {
                 return NotFound();
             }
 
-            _context.userGroups.Remove(userGroups);
+            _context.UserGroups.Remove(userGroups);
             await _context.SaveChangesAsync();
 
             return NoContent();
@@ -118,7 +118,7 @@ namespace MyHSE_Backend.Controllers
 
         private bool userGroupsExists(Guid id)
         {
-            return (_context.userGroups?.Any(e => e.Id == id)).GetValueOrDefault();
+            return (_context.UserGroups?.Any(e => e.Id == id)).GetValueOrDefault();
         }
     }
 }

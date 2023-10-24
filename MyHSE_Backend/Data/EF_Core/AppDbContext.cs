@@ -15,15 +15,9 @@ namespace MyHSE_Backend.Data.EF_Core
             if (!optionsBuilder.IsConfigured) { }
         }
 
-        //        public DbSet<AppUser> AppUsers { get; set; }
         public DbSet<AppUser> AppUsers { get; set; }
-        public DbSet<userGroups> userGroups { get; set; }
+        public DbSet<UserGroups> UserGroups { get; set; }
+        public DbSet<RolePermission> RolePermissions { get; set; }
 
-        //[NotMapped]
-        //public async Task<int> CallSp(int par1, int par2)
-        //{
-        //    var parameter = new SqlParameter("@Parameter1", par1);
-        //    return await Database.ExecuteSqlRawAsync("EXEC MyStoredProcedure @ParameterName", parameter);
-        //}
     }
 }

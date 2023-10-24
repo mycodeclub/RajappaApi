@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace MyHSE_Backend.Data.DbModels.User
 {
-    public class roles
+    public class Roles
     {
         [Key]
         [Display(Name = "Unique ID")]

@@ -3,7 +3,7 @@ using static Azure.Core.HttpHeader;
 
 namespace MyHSE_Backend.Data.DbModels.User
 {
-    public class userGroups
+    public class UserGroups
     {
         [Key]
         [Display(Name = "Unique ID")]
