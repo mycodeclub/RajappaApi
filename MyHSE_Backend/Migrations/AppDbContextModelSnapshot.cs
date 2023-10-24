@@ -217,7 +217,7 @@ namespace MyHSE_Backend.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("AppUsers");
+                    b.ToTable("AppUsers", (string)null);
                 });
 
             modelBuilder.Entity("MyHSE_Backend.Data.DbModels.User.userGroups", b =>
@@ -256,7 +256,7 @@ namespace MyHSE_Backend.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("userGroups");
+                    b.ToTable("userGroups", (string)null);
                 });
 #pragma warning restore 612, 618
         }
