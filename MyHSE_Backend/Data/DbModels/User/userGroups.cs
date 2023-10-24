@@ -25,41 +25,15 @@ namespace MyHSE_Backend.Data.DbModels.User
 
 
         [Display(Name = "Created Date")]
-        public string CREATEDON  { get; set; } = string.Empty;
+        public string CREATEDON { get; set; } = string.Empty;
 
 
         [Display(Name = "Changed By")]
-        public string MODIFIEDBY  { get; set; } = string.Empty;
+        public string MODIFIEDBY { get; set; } = string.Empty;
 
 
         [Display(Name = "Changed Date")]
-        public string MODIFIEDON  { get; set; } = string.Empty;
-
-
-        
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+        public string MODIFIEDON { get; set; } = string.Empty;
 
     }
 }
