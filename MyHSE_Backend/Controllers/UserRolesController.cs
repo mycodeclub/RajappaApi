@@ -19,11 +19,11 @@ namespace MyHSE_Backend.Controllers
 
 
 
-        // GET: api/userGroups
+        // GET: api/userRoles
         [HttpGet]
         public async Task<ActionResult<IEnumerable<UserRoles>>> GetUserRoles()
         {
-            if (_context.UserGroups == null)
+            if (_context.UserRoles == null)
             {
                 return NotFound();
             }

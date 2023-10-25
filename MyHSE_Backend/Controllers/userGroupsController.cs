@@ -93,7 +93,7 @@ namespace MyHSE_Backend.Controllers
             _context.UserGroups.Add(userGroups);
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction("GetuserGroups", new { id = userGroups.Id }, userGroups);
+            return Ok( CreatedAtAction("GetuserGroups", new { id = userGroups.Id }, userGroups));
         }
 
         // DELETE: api/userGroups/5

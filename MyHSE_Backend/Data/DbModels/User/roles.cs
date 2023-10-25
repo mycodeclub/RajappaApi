@@ -1,11 +1,13 @@
 ﻿
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace MyHSE_Backend.Data.DbModels.User
 {
     public class Roles
     {
         [Key]
+        
         [Display(Name = "Unique ID")]
         public Guid Id { get; set; }
 
