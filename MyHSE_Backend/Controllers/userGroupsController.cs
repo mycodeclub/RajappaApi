@@ -23,7 +23,7 @@ namespace MyHSE_Backend.Controllers
 
         // GET: api/userGroups
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<UserGroups>>> GetUserGroups()
+        public async Task<ActionResult<IEnumerable<UserGroups>>> GetuserGroups()
         {
           if (_context.UserGroups == null)
           {

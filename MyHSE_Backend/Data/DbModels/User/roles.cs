@@ -3,7 +3,9 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace MyHSE_Backend.Data.DbModels.User
-{
+{/// <summary>
+/// Roles
+/// </summary>
     public class Roles
     {
         [Key]

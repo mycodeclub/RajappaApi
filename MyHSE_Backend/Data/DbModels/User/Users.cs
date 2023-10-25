@@ -1,8 +1,10 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
 namespace MyHSE_Backend.Data.DbModels.User
-{
-    public class AppUser
+{/// <summary>
+/// Users
+/// </summary>
+    public class Users
     {
         [Key]
         [Display(Name = "Unique ID")]

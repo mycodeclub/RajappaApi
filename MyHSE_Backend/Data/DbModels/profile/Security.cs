@@ -1,42 +1,46 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using static System.Net.Mime.MediaTypeNames;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace MyHSE_Backend.Data.DbModels.profile
-{
+{/// <summary>
+/// Security
+/// </summary>
     public class Security
     {
         [Key]
         [Display(Name = "Unique ID")]
         public Guid Id { get; set; }
 
-        [Display(Name = "Login Type")]
-        public string LGTYPE { get; set; } = string.Empty;
+        //[Display(Name = "Login Type")]
+        //public Drop Down  { get; set; } 
 
         [Display(Name = "OTP ")]
-         public string LGOTP { get; set; } = string.Empty;
+         public bool LGOTP { get; set; }
         
         [Display(Name = "Domain Name")]
-        public string LGDOMAIN { get;  set; } = string.Empty;
+        public string LGDOMAIN  { get;  set; } = string.Empty;
 
         [Display(Name = "Session Timeout")]
-        public string TIMEOUT { get; set; } = string.Empty;
+        public int TIMEOUT  { get; set; }
 
         [Display(Name = "Login Attempts")]
-        public string LGCOUNT { get; set; } = string.Empty;
+        public int LGCOUNT  { get; set; }
 
         [Display(Name = "Captcha?")]
-        public string CAPTCHA { get; set; } = string.Empty;
+        public bool CAPTCHA { get; set; }
 
        [Display(Name = "Password Length")]
-       public string PWLENGTH { get; set; } = string.Empty;
+        public int PWLENGTH { get; set; } 
 
        [Display(Name = "Upper Case?")]
-       public string PWUPPERCASE { get; set; } = string.Empty;
+       public bool PWUPPERCASE { get; set; }
 
        [Display(Name = "Special Character?")]
-       public string PWSPCHAR { get; set; } = string.Empty;
+       public bool PWSPCHAR { get; set; }
 
         [Display(Name = "Number?")]
-        public string PWNUMBER { get; set; } = string.Empty;
+        public bool PWNUMBER { get; set; }
 
         [Display(Name = "Initial Password")]
         public string IPASSWORD { get; set; } = string.Empty;

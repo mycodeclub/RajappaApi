@@ -1,8 +1,8 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace MyHSE_Backend.Data.Settings
+namespace MyHSE_Backend.Data.DbModels.Settings
 {
-    public class Business_Modules
+    public class BusinessModules
     {
         [Key]
         [Display(Name = "Unique ID")]
@@ -12,7 +12,7 @@ namespace MyHSE_Backend.Data.Settings
         public string BUSMTYPE { get; set; } = string.Empty;
 
         [Display(Name = "Active")]
-        public Boolean ACTIVE { get; set; } 
+        public bool ACTIVE { get; set; }
 
         [Display(Name = "Created By")]
         public string CREATEDBY { get; set; } = string.Empty;
