@@ -1,8 +1,11 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace MyHSE_Backend.Controllers.User
+
 {
+    [Authorize]
     public class HomeController : Controller
     {
         // GET: HomeController
