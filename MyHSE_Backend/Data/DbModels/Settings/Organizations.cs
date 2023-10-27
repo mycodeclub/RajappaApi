@@ -9,7 +9,7 @@ namespace MyHSE_Backend.Data.DbModels.Settings
         [Display(Name = "Unique ID")]
         public Guid Id { get; set; }
 
-        [Key]
+       
         [Display(Name = "Organization ID")]
         public Guid ORGID { get; set; }
 
