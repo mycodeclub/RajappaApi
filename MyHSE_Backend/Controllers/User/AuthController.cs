@@ -5,7 +5,7 @@ using MyHSE_Backend.Data.ViewModels.User;
 using MyHSE_Backend.DataRepository.Implementation;
 using MyHSE_Backend.DataRepository.Interfaces;
 
-namespace MyHSE_Backend.Controllers
+namespace MyHSE_Backend.Controllers.User
 {
 
 
@@ -101,4 +101,4 @@ namespace MyHSE_Backend.Controllers
         }
 
     }
-    }
+}

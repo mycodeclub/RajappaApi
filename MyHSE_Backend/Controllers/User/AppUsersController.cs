@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore;
 using MyHSE_Backend.Data.DbModels.User;
 using MyHSE_Backend.Data.EF_Core;
 
-namespace MyHSE_Backend.Controllers
+namespace MyHSE_Backend.Controllers.User
 {
     [Route("api/[controller]")]
     [ApiController]
@@ -38,5 +38,5 @@ namespace MyHSE_Backend.Controllers
 
             return appUser;
         }
-     }
+    }
 }

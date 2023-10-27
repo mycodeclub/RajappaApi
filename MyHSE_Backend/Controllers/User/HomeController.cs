@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
-namespace MyHSE_Backend.Controllers
+namespace MyHSE_Backend.Controllers.User
 {
     public class HomeController : Controller
     {

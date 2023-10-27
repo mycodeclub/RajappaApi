@@ -4,59 +4,56 @@ using Microsoft.EntityFrameworkCore;
 using MyHSE_Backend.Data.DbModels.User;
 using MyHSE_Backend.Data.EF_Core;
 
-namespace MyHSE_Backend.Controllers
+namespace MyHSE_Backend.Controllers.User
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class UserRolesController : ControllerBase
+    public class RolesController : ControllerBase
     {
         private readonly AppDbContext _context;
 
-        public UserRolesController(AppDbContext context)
+        public RolesController(AppDbContext context)
         {
             _context = context;
         }
-
-
-
-        // GET: api/userRoles
+        // GET: api/Roles
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<UserRoles>>> GetUserRoles()
+        public async Task<ActionResult<IEnumerable<Roles>>> GetRoles()
         {
-            if (_context.UserRoles == null)
+            if (_context.Roles == null)
             {
                 return NotFound();
             }
-            return await _context.UserRoles.ToListAsync();
+            return await _context.Roles.ToListAsync();
         }
-        // GET: api/userRoles/5
+        // GET: api/Roles/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<UserRoles>> GetuserRoles(Guid id)
+        public async Task<ActionResult<Roles>> GetRoles(Guid id)
         {
-            if (_context.UserRoles == null)
+            if (_context.Roles == null)
             {
                 return NotFound();
             }
-            var userRoles = await _context.UserRoles.FindAsync(id);
+            var Roles = await _context.Roles.FindAsync(id);
 
-            if (userRoles == null)
+            if (Roles == null)
             {
                 return NotFound();
             }
 
-            return userRoles;
+            return Roles;
         }
-        // PUT: api/userRoles/5
+        // PUT: api/Roles/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutuserRoles(Guid id, UserRoles userRoles)
+        public async Task<IActionResult> PutRoles(Guid id, Roles Roles)
         {
-            if (id != userRoles.Id)
+            if (id != Roles.Id)
             {
                 return BadRequest();
             }
 
-            _context.Entry(userRoles).State = EntityState.Modified;
+            _context.Entry(Roles).State = EntityState.Modified;
 
             try
             {
@@ -76,36 +73,36 @@ namespace MyHSE_Backend.Controllers
 
             return NoContent();
         }
-        // POST: api/userRoles
+
+        // POST: api/Roles
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
-        public async Task<ActionResult<UserRoles>> PostuserRoles(UserRoles userRoles)
+        public async Task<ActionResult<Roles>> PostuserRoles(Roles Roles)
         {
-            if (_context.UserRoles == null)
+            if (_context.Roles == null)
             {
-                return Problem("Entity set 'AppDbContext.userRoles'  is null.");
+                return Problem("Entity set 'AppDbContext.Roles'  is null.");
             }
-            _context.UserRoles.Add(userRoles);
+            _context.Roles.Add(Roles);
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction("GetuserRoles", new { id = userRoles.Id }, userRoles);
+            return Ok(CreatedAtAction("GetRoles", new { id = Roles.Id }, Roles));
         }
-
-        // DELETE: api/userRoles/5
+        // DELETE: api/Roles/5
         [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteuserRoles(Guid id)
+        public async Task<IActionResult> DeleteRoles(Guid id)
         {
-            if (_context.UserRoles == null)
+            if (_context.Roles == null)
             {
                 return NotFound();
             }
-            var userRoles = await _context.UserRoles.FindAsync(id);
-            if (userRoles == null)
+            var Roles = await _context.Roles.FindAsync(id);
+            if (Roles == null)
             {
                 return NotFound();
             }
 
-            _context.UserRoles.Remove(userRoles);
+            _context.Roles.Remove(Roles);
             await _context.SaveChangesAsync();
 
             return NoContent();
@@ -113,7 +110,8 @@ namespace MyHSE_Backend.Controllers
 
         private bool userRolesExists(Guid id)
         {
-            return (_context.UserRoles?.Any(e => e.Id == id)).GetValueOrDefault();
+            return (_context.Roles?.Any(e => e.Id == id)).GetValueOrDefault();
+
         }
     }
 }

@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using MyHSE_Backend.Data.DbModels.User;
 using MyHSE_Backend.Data.EF_Core;
 
-namespace MyHSE_Backend.Controllers
+namespace MyHSE_Backend.Controllers.User
 {
     [Route("api/[controller]")]
     [ApiController]
@@ -25,10 +25,10 @@ namespace MyHSE_Backend.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<UserGroups>>> GetuserGroups()
         {
-          if (_context.UserGroups == null)
-          {
-              return NotFound();
-          }
+            if (_context.UserGroups == null)
+            {
+                return NotFound();
+            }
             return await _context.UserGroups.ToListAsync();
         }
 
@@ -36,10 +36,10 @@ namespace MyHSE_Backend.Controllers
         [HttpGet("{id}")]
         public async Task<ActionResult<UserGroups>> GetuserGroups(Guid id)
         {
-          if (_context.UserGroups == null)
-          {
-              return NotFound();
-          }
+            if (_context.UserGroups == null)
+            {
+                return NotFound();
+            }
             var userGroups = await _context.UserGroups.FindAsync(id);
 
             if (userGroups == null)
@@ -86,14 +86,14 @@ namespace MyHSE_Backend.Controllers
         [HttpPost]
         public async Task<ActionResult<UserGroups>> PostuserGroups(UserGroups userGroups)
         {
-          if (_context.UserGroups == null)
-          {
-              return Problem("Entity set 'AppDbContext.userGroups'  is null.");
-          }
+            if (_context.UserGroups == null)
+            {
+                return Problem("Entity set 'AppDbContext.userGroups'  is null.");
+            }
             _context.UserGroups.Add(userGroups);
             await _context.SaveChangesAsync();
 
-            return Ok( CreatedAtAction("GetuserGroups", new { id = userGroups.Id }, userGroups));
+            return Ok(CreatedAtAction("GetuserGroups", new { id = userGroups.Id }, userGroups));
         }
 
         // DELETE: api/userGroups/5
