@@ -2,7 +2,7 @@
 
 namespace MyHSE_Backend.Data.DbModels.Profile
 {
-    public class Profilesettings
+    public class ProfileSettings
     {
         [Key]
         [Display(Name = "Unique ID")]

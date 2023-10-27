@@ -2,7 +2,7 @@
 
 namespace MyHSE_Backend.Data.DbModels.Settings
 {
-    public class Purchasing_Groups
+    public class PurchasingGroups
     {
 
 

@@ -2,7 +2,7 @@
 
 namespace MyHSE_Backend.Data.DbModels.Settings
 {
-    public class Business_Objects
+    public class BusinessObjects
     {
 
         [Key]

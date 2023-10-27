@@ -1,8 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
-using static System.Net.Mime.MediaTypeNames;
-using static System.Runtime.InteropServices.JavaScript.JSType;
 
-namespace MyHSE_Backend.Data.DbModels.profile
+namespace MyHSE_Backend.Data.DbModels.Profile
 {/// <summary>
 /// Security
 /// </summary>
