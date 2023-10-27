@@ -19,11 +19,11 @@ namespace MyHSE_Backend.Data.DbModels.User
 
 
         [Display(Name = "Role ID")]
-        public string ROLE { get; set; } = string.Empty;
+        public char ROLE { get; set; }
 
 
         [Display(Name = "Valid From Date")]
-        public string VALIDFROM { get; set; } = string.Empty;
+        public DateTime VALIDFROM { get; set; }
 
 
         [Display(Name = "Valid To Date")]
@@ -33,19 +33,19 @@ namespace MyHSE_Backend.Data.DbModels.User
         public string CREATEDBY { get; set; } = string.Empty;
 
         [Display(Name = "Created Date")]
-        public string CREATEDDATE { get; set; } = string.Empty;
+        public DateTime CREATEDDATE { get; set; }
 
         [Display(Name = "Created Time")]
-        public string CREATEDTIME { get; set; } = string.Empty;
+        public DateTime CREATEDTIME { get; set; }
 
 
         [Display(Name = "Changed By")]
         public string CHANGEDBY { get; set; } = string.Empty;
 
         [Display(Name = "Changed Date")]
-        public string CHANGEDDATE { get; set; } = string.Empty;
+        public DateTime CHANGEDDATE { get; set; }
 
         [Display(Name = "Changed Time")]
-        public string CHANGEDTIME { get; set; } = string.Empty;
+        public DateTime CHANGEDTIME { get; set; }
     }
 }

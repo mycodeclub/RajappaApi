@@ -17,7 +17,7 @@ namespace MyHSE_Backend.Data.DbModels.User
 
 
         [Display(Name = "Role ID")]
-        public string Role { get; set; } = string.Empty;
+        public char Role { get; set; }
 
         [Display(Name = "Business Module")]
         public string BUSMTYPE { get; set; } = string.Empty;
@@ -30,25 +30,25 @@ namespace MyHSE_Backend.Data.DbModels.User
 
 
         [Display(Name = "Active [Yes/No]")]
-        public string ACTIVE { get; set; } = string.Empty;
+        public bool ACTIVE { get; set; } 
 
         [Display(Name = "Created By")]
         public string CREATEDBY { get; set; } = string.Empty;
 
         [Display(Name = "Created Date")]
-        public string CREATEDDATE { get; set; } = string.Empty;
+        public DateTime CREATEDDATE { get; set; }
 
         [Display(Name = "Created Time")]
-        public string CREATEDTIME { get; set; } = string.Empty;
+        public DateTime CREATEDTIME { get; set; }
 
 
         [Display(Name = "Changed By")]
         public string CHANGEDBY { get; set; } = string.Empty;
 
         [Display(Name = "Changed Date")]
-        public string CHANGEDDATE { get; set; } = string.Empty;
+        public DateTime CHANGEDDATE { get; set; } 
 
         [Display(Name = "Changed Time")]
-        public string CHANGEDTIME { get; set; } = string.Empty;
+        public DateTime CHANGEDTIME { get; set; } 
     }
 }

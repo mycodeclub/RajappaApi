@@ -27,6 +27,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="Controllers\Profile\" />
     <Folder Include="Models\" />
   </ItemGroup>
 

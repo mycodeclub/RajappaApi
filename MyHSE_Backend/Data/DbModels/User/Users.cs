@@ -95,10 +95,11 @@ namespace MyHSE_Backend.Data.DbModels.User
         public string PARVW { get; set; } = string.Empty;
 
         [Display(Name = "Approval Value")]
-        public string AVALUE { get; set; } = string.Empty;
+        public Decimal AVALUE { get; set; }
 
         [Display(Name = "Land Telephone#")]
-        public string TELNR { get; set; } = string.Empty;
+ 
+ string TELNR { get; set; } = string.Empty;
 
         [Display(Name = "Device Platform [Lookup]")]
         public string DEVICEPF { get; set; } = string.Empty;
@@ -119,7 +120,10 @@ namespace MyHSE_Backend.Data.DbModels.User
         public string TOKENID { get; set; } = string.Empty;
 
         [Display(Name = "Check at Device ID")]
-        public string CHKDEVICEID { get; set; } = string.Empty;
+        public bool CHKDEVICEID { get; set; }
+
+        [Display(Name = "Check App Version")]
+        public bool CHKAPPVERSION { get; set; } 
 
         [Display(Name = "Created By")]
         public string CREATEDBY { get; set; } = string.Empty;
@@ -134,7 +138,7 @@ namespace MyHSE_Backend.Data.DbModels.User
         public string MODIFIEDBY { get; set; } = string.Empty;
 
         [Display(Name = "Changed Date/Time")]
-        public string MODIFIEDON { get; set; } = string.Empty;
+        public DateTime MODIFIEDON { get; set; } 
 
         [Display(Name = "Changed Time")]
         public string CHANGEDTIME { get; set; } = string.Empty;
