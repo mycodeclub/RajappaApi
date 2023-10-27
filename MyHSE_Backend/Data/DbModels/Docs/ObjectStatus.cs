@@ -4,7 +4,7 @@ namespace MyHSE_Backend.Data.DbModels.Docs
 {/// <summary>
 /// Object Status
 /// </summary>
-    public class Object_Status
+    public class ObjectStatus
     {
         [Key]
         [Display(Name = "Unique ID")]

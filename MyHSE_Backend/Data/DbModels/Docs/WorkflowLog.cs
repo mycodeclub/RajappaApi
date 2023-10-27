@@ -4,7 +4,7 @@ namespace MyHSE_Backend.Data.DbModels.Docs
 {/// <summary>
 /// Workflow Log
 /// </summary>
-    public class Workflow_Log
+    public class WorkflowLog
     {
         [Key]
         [Display(Name = "Unique ID")]

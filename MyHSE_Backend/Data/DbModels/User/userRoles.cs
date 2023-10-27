@@ -2,7 +2,7 @@
 
 namespace MyHSE_Backend.Data.DbModels.User
 {/// <summary>
- /// User Roles
+ /// UserRoles
  /// </summary>
     public class UserRoles
     {
@@ -28,9 +28,6 @@ namespace MyHSE_Backend.Data.DbModels.User
 
         [Display(Name = "Valid To Date")]
         public string VALIDTO { get; set; } = string.Empty;
-
-
-
 
         [Display(Name = "Created By")]
         public string CREATEDBY { get; set; } = string.Empty;
