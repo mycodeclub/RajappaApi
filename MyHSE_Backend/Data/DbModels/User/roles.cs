@@ -1,23 +1,27 @@
 ﻿
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace MyHSE_Backend.Data.DbModels.User
-{
-    public class roles
+{/// <summary>
+/// Roles
+/// </summary>
+    public class Roles
     {
         [Key]
+        
         [Display(Name = "Unique ID")]
         public Guid Id { get; set; }
 
 
         [Display(Name = "Role ID")]
-        public string Role { get; set; } = string.Empty;
+        public char Role { get; set; }
 
         [Display(Name = "Description")]
-        public string NAME  { get; set; } = string.Empty;
+        public char NAME  { get; set; } 
 
         [Display(Name = "Active [Yes/No]")]
-        public string ACTIVE  { get; set; } = string.Empty;
+        public bool ACTIVE  { get; set; } 
 
         [Display(Name = "Created By")]
         public string CREATEDBY { get; set; } = string.Empty;

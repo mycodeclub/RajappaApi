@@ -2,32 +2,35 @@
 
 namespace MyHSE_Backend.Data.DbModels.User
 {/// <summary>
- /// UserRoles
- /// </summary>
-    public class UserRoles
+
+    /// <summary>
+    ///  Permissions
+    /// </summary>
+    public class RolePermission
     {
         [Key]
         [Display(Name = "Unique ID")]
         public Guid Id { get; set; }
 
-        [Display(Name = "User ID")]
-        public string Login { get; set; } = string.Empty;
-
         [Display(Name = "Role Unique ID")]
         public string ROLEID { get; set; } = string.Empty;
 
 
-
         [Display(Name = "Role ID")]
-        public char ROLE { get; set; }
+        public char Role { get; set; }
+
+        [Display(Name = "Business Module")]
+        public string BUSMTYPE { get; set; } = string.Empty;
+
+        [Display(Name = "Business Object")]
+        public string BUSOBJTYPE { get; set; } = string.Empty;
+
+        [Display(Name = "Business Function")]
+        public string BUSFTYPE { get; set; } = string.Empty;
 
 
-        [Display(Name = "Valid From Date")]
-        public DateTime VALIDFROM { get; set; }
-
-
-        [Display(Name = "Valid To Date")]
-        public string VALIDTO { get; set; } = string.Empty;
+        [Display(Name = "Active [Yes/No]")]
+        public bool ACTIVE { get; set; } 
 
         [Display(Name = "Created By")]
         public string CREATEDBY { get; set; } = string.Empty;
@@ -43,9 +46,9 @@ namespace MyHSE_Backend.Data.DbModels.User
         public string CHANGEDBY { get; set; } = string.Empty;
 
         [Display(Name = "Changed Date")]
-        public DateTime CHANGEDDATE { get; set; }
+        public DateTime CHANGEDDATE { get; set; } 
 
         [Display(Name = "Changed Time")]
-        public DateTime CHANGEDTIME { get; set; }
+        public DateTime CHANGEDTIME { get; set; } 
     }
 }

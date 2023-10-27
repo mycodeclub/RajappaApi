@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using MyHSE_Backend.Data.EF_Core;
 
@@ -11,9 +12,11 @@ using MyHSE_Backend.Data.EF_Core;
 namespace MyHSE_Backend.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20231027095014_AddedModels")]
+    partial class AddedModels
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -36,11 +39,13 @@ namespace MyHSE_Backend.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<DateTime>("CHANGEDDATE")
-                        .HasColumnType("datetime2");
+                    b.Property<string>("CHANGEDDATE")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
-                    b.Property<DateTime>("CHANGEDTIME")
-                        .HasColumnType("datetime2");
+                    b.Property<string>("CHANGEDTIME")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("CONTENT")
                         .IsRequired()
@@ -50,11 +55,13 @@ namespace MyHSE_Backend.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<DateTime>("CREATEDDATE")
-                        .HasColumnType("datetime2");
+                    b.Property<string>("CREATEDDATE")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
-                    b.Property<DateTime>("CREATEDTIME")
-                        .HasColumnType("datetime2");
+                    b.Property<string>("CREATEDTIME")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("DOCID")
                         .IsRequired()
@@ -255,11 +262,13 @@ namespace MyHSE_Backend.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<DateTime>("CHANGEDDATE")
-                        .HasColumnType("datetime2");
+                    b.Property<string>("CHANGEDDATE")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
-                    b.Property<DateTime>("CHANGEDTIME")
-                        .HasColumnType("datetime2");
+                    b.Property<string>("CHANGEDTIME")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("CPLOGO")
                         .IsRequired()
@@ -273,11 +282,13 @@ namespace MyHSE_Backend.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<DateTime>("CREATEDDATE")
-                        .HasColumnType("datetime2");
+                    b.Property<string>("CREATEDDATE")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
-                    b.Property<DateTime>("CREATEDTIME")
-                        .HasColumnType("datetime2");
+                    b.Property<string>("CREATEDTIME")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("CUID")
                         .IsRequired()
@@ -325,21 +336,25 @@ namespace MyHSE_Backend.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<DateTime>("CHANGEDDATE")
-                        .HasColumnType("datetime2");
+                    b.Property<string>("CHANGEDDATE")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
-                    b.Property<DateTime>("CHANGEDTIME")
-                        .HasColumnType("datetime2");
+                    b.Property<string>("CHANGEDTIME")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("CREATEDBY")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<DateTime>("CREATEDDATE")
-                        .HasColumnType("datetime2");
+                    b.Property<string>("CREATEDDATE")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
-                    b.Property<DateTime>("CREATEDTIME")
-                        .HasColumnType("datetime2");
+                    b.Property<string>("CREATEDTIME")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("GFCMKEY")
                         .IsRequired()
@@ -928,8 +943,9 @@ namespace MyHSE_Backend.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<bool>("ACTIVE")
-                        .HasColumnType("bit");
+                    b.Property<string>("ACTIVE")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("BUSFTYPE")
                         .IsRequired()
@@ -947,21 +963,25 @@ namespace MyHSE_Backend.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<DateTime>("CHANGEDDATE")
-                        .HasColumnType("datetime2");
+                    b.Property<string>("CHANGEDDATE")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
-                    b.Property<DateTime>("CHANGEDTIME")
-                        .HasColumnType("datetime2");
+                    b.Property<string>("CHANGEDTIME")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("CREATEDBY")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<DateTime>("CREATEDDATE")
-                        .HasColumnType("datetime2");
+                    b.Property<string>("CREATEDDATE")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
-                    b.Property<DateTime>("CREATEDTIME")
-                        .HasColumnType("datetime2");
+                    b.Property<string>("CREATEDTIME")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("ROLEID")
                         .IsRequired()
@@ -969,7 +989,7 @@ namespace MyHSE_Backend.Migrations
 
                     b.Property<string>("Role")
                         .IsRequired()
-                        .HasColumnType("nvarchar(1)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 
@@ -982,8 +1002,9 @@ namespace MyHSE_Backend.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<bool>("ACTIVE")
-                        .HasColumnType("bit");
+                    b.Property<string>("ACTIVE")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("CHANGEDBY")
                         .IsRequired()
@@ -1011,11 +1032,11 @@ namespace MyHSE_Backend.Migrations
 
                     b.Property<string>("NAME")
                         .IsRequired()
-                        .HasColumnType("nvarchar(1)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Role")
                         .IsRequired()
-                        .HasColumnType("nvarchar(1)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 
@@ -1028,28 +1049,33 @@ namespace MyHSE_Backend.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<bool>("ACTIVE")
-                        .HasColumnType("bit");
+                    b.Property<string>("ACTIVE")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
-                    b.Property<DateTime>("CREATEDBY")
-                        .HasColumnType("datetime2");
+                    b.Property<string>("CREATEDBY")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
-                    b.Property<DateTime>("CREATEDON")
-                        .HasColumnType("datetime2");
+                    b.Property<string>("CREATEDON")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
-                    b.Property<DateTime>("MODIFIEDBY")
-                        .HasColumnType("datetime2");
+                    b.Property<string>("MODIFIEDBY")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
-                    b.Property<DateTime>("MODIFIEDON")
-                        .HasColumnType("datetime2");
+                    b.Property<string>("MODIFIEDON")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("NAME")
                         .IsRequired()
-                        .HasColumnType("nvarchar(1)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("USGRP")
                         .IsRequired()
-                        .HasColumnType("nvarchar(1)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 
@@ -1066,21 +1092,25 @@ namespace MyHSE_Backend.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<DateTime>("CHANGEDDATE")
-                        .HasColumnType("datetime2");
+                    b.Property<string>("CHANGEDDATE")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
-                    b.Property<DateTime>("CHANGEDTIME")
-                        .HasColumnType("datetime2");
+                    b.Property<string>("CHANGEDTIME")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("CREATEDBY")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<DateTime>("CREATEDDATE")
-                        .HasColumnType("datetime2");
+                    b.Property<string>("CREATEDDATE")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
-                    b.Property<DateTime>("CREATEDTIME")
-                        .HasColumnType("datetime2");
+                    b.Property<string>("CREATEDTIME")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Login")
                         .IsRequired()
@@ -1088,14 +1118,15 @@ namespace MyHSE_Backend.Migrations
 
                     b.Property<string>("ROLE")
                         .IsRequired()
-                        .HasColumnType("nvarchar(1)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("ROLEID")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<DateTime>("VALIDFROM")
-                        .HasColumnType("datetime2");
+                    b.Property<string>("VALIDFROM")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("VALIDTO")
                         .IsRequired()
@@ -1120,18 +1151,17 @@ namespace MyHSE_Backend.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<decimal>("AVALUE")
-                        .HasColumnType("decimal(18,2)");
+                    b.Property<string>("AVALUE")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("CHANGEDTIME")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<bool>("CHKAPPVERSION")
-                        .HasColumnType("bit");
-
-                    b.Property<bool>("CHKDEVICEID")
-                        .HasColumnType("bit");
+                    b.Property<string>("CHKDEVICEID")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("COUNTRY")
                         .IsRequired()
@@ -1220,8 +1250,9 @@ namespace MyHSE_Backend.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<DateTime>("MODIFIEDON")
-                        .HasColumnType("datetime2");
+                    b.Property<string>("MODIFIEDON")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("ORGID")
                         .IsRequired()
@@ -1264,6 +1295,10 @@ namespace MyHSE_Backend.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("TELMB")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("TELNR")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 

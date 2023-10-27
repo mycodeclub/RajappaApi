@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using MyHSE_Backend.Data.DbModels.User;
+using MyHSE_Backend.Data.DbModels.Profile;
 
 namespace MyHSE_Backend.Data.EF_Core
 {
@@ -15,15 +16,37 @@ namespace MyHSE_Backend.Data.EF_Core
             if (!optionsBuilder.IsConfigured) { }
         }
 
-        //        public DbSet<AppUser> AppUsers { get; set; }
-        public DbSet<AppUser> AppUsers { get; set; }
-        public DbSet<userGroups> userGroups { get; set; }
+        public DbSet<Users> AppUsers { get; set; }
+        public DbSet<UserGroups> UserGroups { get; set; }
+        public DbSet<RolePermission> RolePermissions { get; set; }
+        public DbSet<UserRoles> UserRoles { get; set; }
+        public DbSet<Roles> Roles { get; set; }
 
-        //[NotMapped]
-        //public async Task<int> CallSp(int par1, int par2)
-        //{
-        //    var parameter = new SqlParameter("@Parameter1", par1);
-        //    return await Database.ExecuteSqlRawAsync("EXEC MyStoredProcedure @ParameterName", parameter);
-        //}
+        //------ Profiles Entity
+        public DbSet<ProfileSettings> ProfileSettings { get; set; }
+        public DbSet<Security> Security { get; set; }
+        //------ Settings Entity
+
+        public DbSet<MyHSE_Backend.Data.DbModels.Settings.BusinessModules> BusinessModules{ get; set; }
+        public DbSet<MyHSE_Backend.Data.DbModels.Settings.BusinessObjects> BusinessObjects { get; set; }
+        public DbSet<MyHSE_Backend.Data.DbModels.Settings.Classification> Classification { get; set; }
+        public DbSet<MyHSE_Backend.Data.DbModels.Settings.Organizations> Organizations{ get; set; }
+        public DbSet<MyHSE_Backend.Data.DbModels.Settings.Partners> Partners{ get; set; }
+        public DbSet<MyHSE_Backend.Data.DbModels.Settings.Plants> Plants{ get; set; }
+        public DbSet<MyHSE_Backend.Data.DbModels.Settings.PurchasingGroups> PurchasingGroups{ get; set; }
+        public DbSet<MyHSE_Backend.Data.DbModels.Settings.PurchasingOrganizations> PurchasingOrganizations{ get; set; }
+        public DbSet<MyHSE_Backend.Data.DbModels.Settings.Units> Units{ get; set; }
+
+        //-----Docs Entity
+
+
+        public DbSet<MyHSE_Backend.Data.DbModels.Docs.Documents> Documents{ get; set; }
+        public DbSet<MyHSE_Backend.Data.DbModels.Docs.ObjectStatus> ObjectStatus{ get; set; }
+        public DbSet<MyHSE_Backend.Data.DbModels.Docs.WorkflowLog> WorkflowLog{ get; set; }
+
+
+
+
+
     }
 }

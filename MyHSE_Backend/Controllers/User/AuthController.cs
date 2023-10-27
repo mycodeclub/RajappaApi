@@ -1,16 +1,18 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using MyHSE_Backend.Data.DbModels.User;
 using MyHSE_Backend.Data.EF_Core;
 using MyHSE_Backend.Data.ViewModels.User;
 using MyHSE_Backend.DataRepository.Implementation;
 using MyHSE_Backend.DataRepository.Interfaces;
 
-namespace MyHSE_Backend.Controllers
+namespace MyHSE_Backend.Controllers.User
 {
 
 
     [Route("api/[controller]")]
     [ApiController]
+    [AllowAnonymous]
     public class AuthController : ControllerBase
     {
         private readonly IConfiguration _configuration;
@@ -81,7 +83,7 @@ namespace MyHSE_Backend.Controllers
 
 
         [HttpPost("FullRegistration")]
-        public async Task<ActionResult<UserRegistrationResponse>> FullRegister(AppUser _user)
+        public async Task<ActionResult<UserRegistrationResponse>> FullRegister(Users _user)
         {
             if (ModelState.IsValid)
             {
@@ -101,4 +103,4 @@ namespace MyHSE_Backend.Controllers
         }
 
     }
-    }
+}
