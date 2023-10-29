@@ -19,6 +19,9 @@ namespace MyHSE_Backend.Data.DbModels.Docs
         [Display(Name = "Object ID")]
         public string OBJID  { get; set; } = string.Empty;
 
+        [Display(Name = "Request ID")]
+        public string RequestID { get; set; } = string.Empty;
+
         [Display(Name = "File Name")]
         public string FILENAME  { get; set; } = string.Empty;
 

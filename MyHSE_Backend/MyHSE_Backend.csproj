@@ -27,6 +27,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="Data\DbModels\LK01\" />
     <Folder Include="Models\" />
   </ItemGroup>
 

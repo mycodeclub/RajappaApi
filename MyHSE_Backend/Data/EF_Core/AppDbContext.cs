@@ -1,6 +1,9 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using MyHSE_Backend.Data.DbModels.User;
 using MyHSE_Backend.Data.DbModels.Profile;
+using MyHSE_Backend.Data.DbModels.LK01;
+using MyHSE_Backend.Data.DbModels.Settings;
+using MyHSE_Backend.DataRepository.Implementation;
 
 namespace MyHSE_Backend.Data.EF_Core
 {
@@ -61,8 +64,19 @@ namespace MyHSE_Backend.Data.EF_Core
         public DbSet<MyHSE_Backend.Data.DbModels.Docs.ObjectStatus> ObjectStatus { get; set; }
         public DbSet<MyHSE_Backend.Data.DbModels.Docs.WorkflowLog> WorkflowLog { get; set; }
 
+        
+        public DbSet<Incident> Incidents { get; set; }
 
+        public DbSet<IncidentCategory> IncidentCategories { get; set; }
 
+        public DbSet<IncidentClassification> IncidentClassifications { get; set; }
+
+        public DbSet<Victim> Victims { get; set; }
+
+        public DbSet<VictimCategory> VictimCategories { get; set; }
+
+        public DbSet<Comment> Comments { get; set; }
+        public DbSet<Department> Departments { get; set; }
 
 
     }
