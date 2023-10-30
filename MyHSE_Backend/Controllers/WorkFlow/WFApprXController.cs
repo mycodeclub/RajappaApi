@@ -1,37 +1,37 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using MyHSE_Backend.Data.DbModels.Settings;
+using MyHSE_Backend.Data.DbModels.WorkFlow;
 using MyHSE_Backend.Data.EF_Core;
 using MyHSE_Backend.Data.ViewModels;
 using MyHSE_Backend.Data.ViewModels.User;
 using MyHSE_Backend.DataRepository.Implementation;
 using MyHSE_Backend.DataRepository.Interfaces;
 
-namespace MyHSE_Backend.Controllers.Settings
+namespace MyHSE_Backend.Controllers.WorkFlow
 {
-
 
     [Route("api/[controller]")]
     [ApiController]
     [AllowAnonymous]
-    public class DepartmentController : ControllerBase
+    public class WFApprXController : ControllerBase
     {
         private readonly IConfiguration _configuration;
-        private readonly IDepartmentDR incidentClassificationService;
+        private readonly IWFApprXDR wFApprXService;
         private readonly AppDbContext context;
-        public DepartmentController(AppDbContext context, IConfiguration configuration)
+        public WFApprXController(AppDbContext context, IConfiguration configuration)
         {
             _configuration = configuration;
-            incidentClassificationService = new DepartmentDR(context, _configuration);
+            wFApprXService = new WFApprXDR(context, _configuration);
         }
 
-        [HttpGet("GetAllDepartments")]
-        public async Task<ActionResult<LoginVM>> GetAllDepartments()
+        [HttpGet("GetAllWFApprXs")]
+        public async Task<ActionResult<LoginVM>> GetAllWFApprXs()
         {
 
             try
             {
-                var result = await incidentClassificationService.GetAllDepartments();
+                var result = await wFApprXService.GetAllWFApprXs();
                 if (result != null && result.Any())
                     return Ok(result);
                 else
@@ -40,13 +40,13 @@ namespace MyHSE_Backend.Controllers.Settings
             catch (Exception ex) { return BadRequest(ex.Message); }
         }
         
-        [HttpGet("GetDepartmentById")]
-        public async Task<ActionResult<Department>> GetDepartmentById(Guid id)
+        [HttpGet("GetWFApprXById")]
+        public async Task<ActionResult<WFApprX>> GetWFApprXById(Guid id)
         {
 
             try
             {
-                var result = await incidentClassificationService.GetDepartmentById(id);
+                var result = await wFApprXService.GetWFApprXById(id);
                 if (result != null )
                     return Ok(result);
                 else
@@ -55,14 +55,14 @@ namespace MyHSE_Backend.Controllers.Settings
             catch (Exception ex) { return BadRequest(ex.Message); }
         }
 
-        [HttpPost("UpdateDepartment")]
-        public async Task<ActionResult<UpdateResponse>> UpdateDepartment(Department incidentClassification)
+        [HttpPost("UpdateWFApprX")]
+        public async Task<ActionResult<UpdateResponse>> UpdateWFApprX(WFApprX wFApprX)
         {
             if (ModelState.IsValid)
             {
                 try
                 {
-                    var result = await incidentClassificationService.UpdateDepartment(incidentClassification);
+                    var result = await wFApprXService.UpdateWFApprX(wFApprX);
 
                     if (result == null)
                     {
@@ -80,14 +80,14 @@ namespace MyHSE_Backend.Controllers.Settings
             return BadRequest("Invalid Input");
         }
 
-        [HttpPost("CreateDepartment")]
-        public async Task<ActionResult<CreatedResult>> CreateDepartment(Department incidentClassification)
+        [HttpPost("CreateWFApprX")]
+        public async Task<ActionResult<CreatedResult>> CreateWFApprX(WFApprX wFApprX)
         {
             if (ModelState.IsValid)
             {
                 try
                 {
-                    var result = await incidentClassificationService.CreateDepartment(incidentClassification);
+                    var result = await wFApprXService.CreateWFApprX(wFApprX);
 
                     if (result == null)
                     {

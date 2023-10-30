@@ -3,7 +3,7 @@ using MyHSE_Backend.Data.DbModels.User;
 using MyHSE_Backend.Data.DbModels.Profile;
 using MyHSE_Backend.Data.DbModels.LK01;
 using MyHSE_Backend.Data.DbModels.Settings;
-using MyHSE_Backend.DataRepository.Implementation;
+using MyHSE_Backend.Data.DbModels.WorkFlow;
 
 namespace MyHSE_Backend.Data.EF_Core
 {
@@ -64,7 +64,7 @@ namespace MyHSE_Backend.Data.EF_Core
         public DbSet<MyHSE_Backend.Data.DbModels.Docs.ObjectStatus> ObjectStatus { get; set; }
         public DbSet<MyHSE_Backend.Data.DbModels.Docs.WorkflowLog> WorkflowLog { get; set; }
 
-        
+
         public DbSet<Incident> Incidents { get; set; }
 
         public DbSet<IncidentCategory> IncidentCategories { get; set; }
@@ -77,6 +77,14 @@ namespace MyHSE_Backend.Data.EF_Core
 
         public DbSet<Comment> Comments { get; set; }
         public DbSet<Department> Departments { get; set; }
+
+        public DbSet<WFGeneral> WFGenerals { get; set; }
+
+        public DbSet<WFApprover> WFApprovers { get; set; }
+
+        public DbSet<WFApprX> WFApprXs { get; set; }
+
+        public DbSet<WFContent> WFContents { get; set; }
 
 
     }

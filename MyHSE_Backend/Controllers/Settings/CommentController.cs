@@ -7,7 +7,7 @@ using MyHSE_Backend.Data.ViewModels.User;
 using MyHSE_Backend.DataRepository.Implementation;
 using MyHSE_Backend.DataRepository.Interfaces;
 
-namespace MyHSE_Backend.Controllers.User
+namespace MyHSE_Backend.Controllers.Settings
 {
 
 
@@ -17,12 +17,12 @@ namespace MyHSE_Backend.Controllers.User
     public class CommentController : ControllerBase
     {
         private readonly IConfiguration _configuration;
-        private readonly ICommentDR incidentClassificationService;
+        private readonly ICommentDR commentService;
         private readonly AppDbContext context;
         public CommentController(AppDbContext context, IConfiguration configuration)
         {
             _configuration = configuration;
-            incidentClassificationService = new CommentDR(context, _configuration);
+            commentService = new CommentDR(context, _configuration);
         }
 
         [HttpGet("GetAllCommentsByRequestId")]
@@ -31,7 +31,7 @@ namespace MyHSE_Backend.Controllers.User
 
             try
             {
-                var result = await incidentClassificationService.GetAllCommentsByRequestId(requestId);
+                var result = await commentService.GetAllCommentsByRequestId(requestId);
                 if (result != null && result.Any())
                     return Ok(result);
                 else
@@ -46,7 +46,7 @@ namespace MyHSE_Backend.Controllers.User
 
             try
             {
-                var result = await incidentClassificationService.GetCommentById(id);
+                var result = await commentService.GetCommentById(id);
                 if (result != null )
                     return Ok(result);
                 else
@@ -56,13 +56,13 @@ namespace MyHSE_Backend.Controllers.User
         }
 
         [HttpPost("UpdateComment")]
-        public async Task<ActionResult<UpdateResponse>> UpdateComment(Comment incidentClassification)
+        public async Task<ActionResult<UpdateResponse>> UpdateComment(Comment comment)
         {
             if (ModelState.IsValid)
             {
                 try
                 {
-                    var result = await incidentClassificationService.UpdateComment(incidentClassification);
+                    var result = await commentService.UpdateComment(comment);
 
                     if (result == null)
                     {
@@ -81,13 +81,13 @@ namespace MyHSE_Backend.Controllers.User
         }
 
         [HttpPost("CreateComment")]
-        public async Task<ActionResult<CreatedResult>> CreateComment(Comment incidentClassification)
+        public async Task<ActionResult<CreatedResult>> CreateComment(Comment comment)
         {
             if (ModelState.IsValid)
             {
                 try
                 {
-                    var result = await incidentClassificationService.CreateComment(incidentClassification);
+                    var result = await commentService.CreateComment(comment);
 
                     if (result == null)
                     {

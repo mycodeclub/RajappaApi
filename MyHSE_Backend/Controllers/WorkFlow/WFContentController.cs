@@ -1,37 +1,37 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using MyHSE_Backend.Data.DbModels.Settings;
+using MyHSE_Backend.Data.DbModels.WorkFlow;
 using MyHSE_Backend.Data.EF_Core;
 using MyHSE_Backend.Data.ViewModels;
 using MyHSE_Backend.Data.ViewModels.User;
 using MyHSE_Backend.DataRepository.Implementation;
 using MyHSE_Backend.DataRepository.Interfaces;
 
-namespace MyHSE_Backend.Controllers.Settings
+namespace MyHSE_Backend.Controllers.WorkFlow
 {
-
 
     [Route("api/[controller]")]
     [ApiController]
     [AllowAnonymous]
-    public class DepartmentController : ControllerBase
+    public class WFContentController : ControllerBase
     {
         private readonly IConfiguration _configuration;
-        private readonly IDepartmentDR incidentClassificationService;
+        private readonly IWFContentDR wFContentService;
         private readonly AppDbContext context;
-        public DepartmentController(AppDbContext context, IConfiguration configuration)
+        public WFContentController(AppDbContext context, IConfiguration configuration)
         {
             _configuration = configuration;
-            incidentClassificationService = new DepartmentDR(context, _configuration);
+            wFContentService = new WFContentDR(context, _configuration);
         }
 
-        [HttpGet("GetAllDepartments")]
-        public async Task<ActionResult<LoginVM>> GetAllDepartments()
+        [HttpGet("GetAllWFContents")]
+        public async Task<ActionResult<LoginVM>> GetAllWFContents()
         {
 
             try
             {
-                var result = await incidentClassificationService.GetAllDepartments();
+                var result = await wFContentService.GetAllWFContents();
                 if (result != null && result.Any())
                     return Ok(result);
                 else
@@ -40,13 +40,13 @@ namespace MyHSE_Backend.Controllers.Settings
             catch (Exception ex) { return BadRequest(ex.Message); }
         }
         
-        [HttpGet("GetDepartmentById")]
-        public async Task<ActionResult<Department>> GetDepartmentById(Guid id)
+        [HttpGet("GetWFContentById")]
+        public async Task<ActionResult<WFContent>> GetWFContentById(Guid id)
         {
 
             try
             {
-                var result = await incidentClassificationService.GetDepartmentById(id);
+                var result = await wFContentService.GetWFContentById(id);
                 if (result != null )
                     return Ok(result);
                 else
@@ -55,14 +55,14 @@ namespace MyHSE_Backend.Controllers.Settings
             catch (Exception ex) { return BadRequest(ex.Message); }
         }
 
-        [HttpPost("UpdateDepartment")]
-        public async Task<ActionResult<UpdateResponse>> UpdateDepartment(Department incidentClassification)
+        [HttpPost("UpdateWFContent")]
+        public async Task<ActionResult<UpdateResponse>> UpdateWFContent(WFContent wFContent)
         {
             if (ModelState.IsValid)
             {
                 try
                 {
-                    var result = await incidentClassificationService.UpdateDepartment(incidentClassification);
+                    var result = await wFContentService.UpdateWFContent(wFContent);
 
                     if (result == null)
                     {
@@ -80,14 +80,14 @@ namespace MyHSE_Backend.Controllers.Settings
             return BadRequest("Invalid Input");
         }
 
-        [HttpPost("CreateDepartment")]
-        public async Task<ActionResult<CreatedResult>> CreateDepartment(Department incidentClassification)
+        [HttpPost("CreateWFContent")]
+        public async Task<ActionResult<CreatedResult>> CreateWFContent(WFContent wFContent)
         {
             if (ModelState.IsValid)
             {
                 try
                 {
-                    var result = await incidentClassificationService.CreateDepartment(incidentClassification);
+                    var result = await wFContentService.CreateWFContent(wFContent);
 
                     if (result == null)
                     {
