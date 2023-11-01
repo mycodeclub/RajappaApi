@@ -1,9 +1,11 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using MyHSE_Backend.Data.DbModels.LK01;
+using MyHSE_Backend.Data.DbModels.Settings;
 using MyHSE_Backend.Data.DbModels.User;
 using MyHSE_Backend.Data.EF_Core;
 using MyHSE_Backend.Data.ViewModels;
+using MyHSE_Backend.Data.ViewModels.LK01;
 using MyHSE_Backend.Data.ViewModels.User;
 using MyHSE_Backend.DataRepository.Implementation;
 using MyHSE_Backend.DataRepository.Interfaces;
@@ -15,24 +17,27 @@ namespace MyHSE_Backend.Controllers.User
     [Route("api/[controller]")]
     [ApiController]
     [AllowAnonymous]
-    public class IncidentController : ControllerBase
+    public class LK01Controller : ControllerBase
     {
         private readonly IConfiguration _configuration;
-        private readonly IIncidentDR incidentService;
+        private readonly ILK01DR _incidentService;
+        private readonly VictimDR _victimService;
         private readonly AppDbContext context;
-        public IncidentController(AppDbContext context, IConfiguration configuration)
+        public LK01Controller(AppDbContext context, IConfiguration configuration)
         {
             _configuration = configuration;
-            incidentService = new IncidentDR(context, _configuration);
+            _incidentService = new LK01DR(context, _configuration);
+            _victimService = new VictimDR(context, _configuration);
         }
 
-        [HttpGet("GetAllIncidents")]
-        public async Task<ActionResult<LoginVM>> GetAllIncidents()
+        [HttpGet("GetAllLK01Incidents")]
+        public async Task<ActionResult<LK01VM>> GetAllLK01Incidents()
         {
 
             try
             {
-                var result = await incidentService.GetAllIncidents();
+               var  result = await _incidentService.GetAllIncidents();
+                
                 if (result != null && result.Any())
                     return Ok(result);
                 else
@@ -41,13 +46,13 @@ namespace MyHSE_Backend.Controllers.User
             catch (Exception ex) { return BadRequest(ex.Message); }
         }
         
-        [HttpGet("GetIncidentByNumber")]
-        public async Task<ActionResult<Incident>> GetIncidentByNumber(string number)
+        [HttpGet("GetLK01ByRequestId")]
+        public async Task<ActionResult<LK01Header>> GetLK01ByRequestId(string requestId)
         {
 
             try
             {
-                var result = await incidentService.GetIncidentByNumber(number);
+                var result = await _incidentService.GetLK01ByRequestId(requestId);
                 if (result != null )
                     return Ok(result);
                 else
@@ -56,14 +61,14 @@ namespace MyHSE_Backend.Controllers.User
             catch (Exception ex) { return BadRequest(ex.Message); }
         }
 
-        [HttpPost("UpdateIncident")]
-        public async Task<ActionResult<UpdateResponse>> UpdateIncident(Incident incident)
+        [HttpPut("UpdateLK01Incident")]
+        public async Task<ActionResult<UpdateResponse>> UpdateLK01Incident(LK01VM incident)
         {
             if (ModelState.IsValid)
             {
                 try
                 {
-                    var result = await incidentService.UpdateIncident(incident);
+                    var result = await _incidentService.UpdateLK01Incident(incident);
 
                     if (result == null)
                     {
@@ -81,14 +86,14 @@ namespace MyHSE_Backend.Controllers.User
             return BadRequest("Invalid Input");
         }
 
-        [HttpPost("CreateIncident")]
-        public async Task<ActionResult<CreatedResult>> CreateIncident(Incident incident)
+        [HttpPost("CreateLK01Incident")]
+        public async Task<ActionResult<CreatedResult>> CreateLK01Incident(LK01VM incident)
         {
             if (ModelState.IsValid)
             {
                 try
                 {
-                    var result = await incidentService.CreateIncident(incident);
+                    var result = await _incidentService.CreateLK01Incident(incident);
 
                     if (result == null)
                     {

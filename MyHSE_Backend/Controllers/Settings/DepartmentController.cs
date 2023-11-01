@@ -55,7 +55,7 @@ namespace MyHSE_Backend.Controllers.Settings
             catch (Exception ex) { return BadRequest(ex.Message); }
         }
 
-        [HttpPost("UpdateDepartment")]
+        [HttpPut("UpdateDepartment")]
         public async Task<ActionResult<UpdateResponse>> UpdateDepartment(Department incidentClassification)
         {
             if (ModelState.IsValid)

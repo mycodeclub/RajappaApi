@@ -8,13 +8,13 @@ namespace MyHSE_Backend.DataRepository.Interfaces
 {
     public interface ICommentDR
     {
-        public Task<IEnumerable<Comment>> GetAllCommentsByRequestId(string requestId);
+        public Task<IEnumerable<RequestComments>> GetAllCommentsByRequestId(string requestId);
 
-        public Task<Comment> GetCommentById(Guid id);
+        public Task<RequestComments> GetCommentById(Guid id);
 
-        public Task<CreateResponse> CreateComment(Comment comment);
+        public Task<CreateResponse> CreateComment(RequestComments comment);
 
-        public Task<UpdateResponse> UpdateComment(Comment comment);
+        public Task<UpdateResponse> UpdateComment(RequestComments comment);
 
     }
 }

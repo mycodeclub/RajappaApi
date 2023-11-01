@@ -1,23 +1,35 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 
 namespace MyHSE_Backend.Data.DbModels.Settings;
 
-public partial class Comment
+public partial class RequestComments
 {
     [Key]
     [Display(Name = "Unique ID")]
     public Guid CommentId { get; set; }
+
+    [Required]
+    [Display(Name = "Request Id")]
+    public string RequestId { get; set; } 
+
+    [Display(Name = "Financial Year")]
+    public int? FYear { get; set; }
+
+    [Display(Name = "Business Module")]
+    public string? BusMType { get; set; }
+
+    [Display(Name = "Business Object")]
+    public string? BusObjType { get; set; }
+
 
     [Display(Name = "Comment Description")]
     public string? CommentDescription { get; set; }
 
     [Display(Name = "Comment Category")]
     public Guid? CommentCategory { get; set; }
-
-    [Display(Name = "Request Id")]
-    public string? RequestId { get; set; }
 
     [Display(Name = "Created On")]
     public DateTime? CreatedOn { get; set; }

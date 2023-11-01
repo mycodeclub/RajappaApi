@@ -4,11 +4,18 @@ using System.ComponentModel.DataAnnotations;
 
 namespace MyHSE_Backend.Data.DbModels.Settings;
 
-public partial class Victim
+public partial class LK01Victim
 {
     [Key]
     [Display(Name = "Victim ID")]
     public Guid VictId { get; set; }
+
+    [Required]
+    [Display(Name = "Request Id")]
+    public string RequestId { get; set; }
+
+    [Display(Name = "Financial Year")]
+    public int? FYear { get; set; }
 
     [Display(Name = "Victim Name")]
     public string? VictName { get; set; }
@@ -21,9 +28,12 @@ public partial class Victim
 
     [Display(Name = "Victim Details")]
     public string? VictDetails { get; set; }
+
+    [Display(Name ="Name of Contractor")]
+    public string? VictContractor { get; set; }
     
-    [Display(Name = "Request Id")]
-    public string? RequestId { get; set; }
+    [Display(Name = "Number of Sick Leaves")]
+    public int? NoSickLeaves { get; set; }
 
     [Display(Name = "Created On")]
     public DateTime? CreatedOn { get; set; }

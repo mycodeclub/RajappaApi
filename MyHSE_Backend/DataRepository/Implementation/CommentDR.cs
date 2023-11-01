@@ -21,7 +21,7 @@ namespace MyHSE_Backend.DataRepository.Implementation
 
         }
 
-        public async Task<CreateResponse> CreateComment(Comment comment)
+        public async Task<CreateResponse> CreateComment(RequestComments comment)
         {
             var response = new CreateResponse();
 
@@ -46,14 +46,14 @@ namespace MyHSE_Backend.DataRepository.Implementation
         }
 
 
-        public async Task<IEnumerable<Comment>> GetAllCommentsByRequestId(string requestId)
+        public async Task<IEnumerable<RequestComments>> GetAllCommentsByRequestId(string requestId)
         {
-            IEnumerable<Comment> Comments;
+            IEnumerable<RequestComments> Comments;
             Comments = await _context.Comments.Where(i => i.RequestId.Equals(requestId)).ToListAsync();
             return Comments;
         }
 
-        public async Task<Comment> GetCommentById(Guid id)
+        public async Task<RequestComments> GetCommentById(Guid id)
         {
             try
             {
@@ -65,7 +65,7 @@ namespace MyHSE_Backend.DataRepository.Implementation
             }
         }
 
-        public async Task<UpdateResponse> UpdateComment(Comment comment)
+        public async Task<UpdateResponse> UpdateComment(RequestComments comment)
         {
             var response = new UpdateResponse();
 

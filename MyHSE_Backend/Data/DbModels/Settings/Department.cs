@@ -8,14 +8,14 @@ public partial class Department
 {
 
     [Key]
-    [Display(Name = "Unique ID")]
+    [Display(Name = "Department ID")]
     public Guid Id { get; set; }
+
+    [Display(Name = "Division ID")]
+    public Guid DivisionId { get; set; }
 
     [Display(Name = "Department Name")]
     public string? DepName { get; set; }
-
-    [Display(Name = "Department Type")]
-    public string? DepType { get; set; }
 
     [Display(Name = "Department Description")]
     public string? DepDescription { get; set; }

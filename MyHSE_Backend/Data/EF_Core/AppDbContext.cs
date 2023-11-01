@@ -65,17 +65,17 @@ namespace MyHSE_Backend.Data.EF_Core
         public DbSet<MyHSE_Backend.Data.DbModels.Docs.WorkflowLog> WorkflowLog { get; set; }
 
 
-        public DbSet<Incident> Incidents { get; set; }
+        public DbSet<LK01Header> LK01Headers { get; set; }
 
         public DbSet<IncidentCategory> IncidentCategories { get; set; }
 
         public DbSet<IncidentClassification> IncidentClassifications { get; set; }
 
-        public DbSet<Victim> Victims { get; set; }
+        public DbSet<LK01Victim> Victims { get; set; }
 
         public DbSet<VictimCategory> VictimCategories { get; set; }
 
-        public DbSet<Comment> Comments { get; set; }
+        public DbSet<RequestComments> Comments { get; set; }
         public DbSet<Department> Departments { get; set; }
 
         public DbSet<WFGeneral> WFGenerals { get; set; }

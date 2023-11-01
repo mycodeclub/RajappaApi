@@ -1,6 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using MyHSE_Backend.Data.DbModels.LK01;
-using MyHSE_Backend.Data.DbModels.User;
+using MyHSE_Backend.Data.DbModels.Settings;
 using MyHSE_Backend.Data.EF_Core;
 using MyHSE_Backend.Data.ViewModels;
 using MyHSE_Backend.Data.ViewModels.User;
@@ -9,34 +8,34 @@ using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace MyHSE_Backend.DataRepository.Implementation
 {
-    public class IncidentDR : IIncidentDR
+    public class VictimDR : IVictimDR
     {
         private AppDbContext _context;
         private IConfiguration _config;
 
 
-        public IncidentDR(AppDbContext context, IConfiguration config)
+        public VictimDR(AppDbContext context, IConfiguration config)
         {
             _context = context;
             _config = config;
 
         }
 
-        public async Task<CreateResponse> CreateIncident(Incident incident)
+        public async Task<CreateResponse> CreateVictim(LK01Victim victim)
         {
             var response = new CreateResponse();
 
-            if (await IfIncientExists(incident.IncNumber))
+            if (await IfVictimExists(victim.VictName,victim.RequestId))
             {
-                response.ErrorMessages = new List<string>() { "Incident already exist with given Number, please try with different Number" };
+                response.ErrorMessages = new List<string>() { "Victim already exist with given Name, please verify." };
                 return response;
             }
             else
             {
                                 
-                incident.CreatedOn = DateTime.Now;
+                victim.CreatedOn = DateTime.Now;
                 
-                _context.Incidents.Add(incident);
+                _context.Victims.Add(victim);
                 try { await _context.SaveChangesAsync(); }
                 catch (Exception ex)
                 {
@@ -48,24 +47,24 @@ namespace MyHSE_Backend.DataRepository.Implementation
                     response.ErrorMessages.Add(ex.StackTrace);
                     return response;
                 }
-                response.UniqueId = incident.Id;
+                response.UniqueId = victim.VictId;
                 response.IsCreated = true;
                 return response;
             }
         }
 
-        public async Task<IEnumerable<Incident>> GetAllIncidents()
+        public async Task<IEnumerable<LK01Victim>> GetAllVictims()
         {
-            IEnumerable<Incident> incidents;
-            incidents = await _context.Incidents.ToListAsync();
-            return incidents;
+            IEnumerable<LK01Victim> Victims;
+            Victims = await _context.Victims.ToListAsync();
+            return Victims;
         }
 
-        public async Task<Incident> GetIncidentByNumber(string number)
+        public async Task<LK01Victim> GetVictimById(Guid id)
         {
             try
             {
-                return await _context.Incidents.Where(u => u.IncNumber.Equals(number)).FirstOrDefaultAsync();
+                return await _context.Victims.Where(u => u.VictCategoryId.Equals(id)).FirstOrDefaultAsync();
             }
             catch (Exception ex)
             {
@@ -73,25 +72,25 @@ namespace MyHSE_Backend.DataRepository.Implementation
             }
         }
 
-        public async Task<bool> IfIncientExists(string incidentNumber)
+        public async Task<bool> IfVictimExists(string victimName, string requestId)
         {
-            return await _context.Incidents.AnyAsync(u => u.IncNumber.Equals(incidentNumber));
+            return await _context.Victims.AnyAsync(u => u.VictName.Equals(victimName) && u.RequestId.Equals(requestId));
         }
 
-        public async Task<UpdateResponse> UpdateIncident(Incident incident)
+        public async Task<UpdateResponse> UpdateVictim(LK01Victim victim)
         {
             var response = new UpdateResponse();
 
-          var SelectedInc= await GetIncidentByNumber(incident.IncNumber);
+          var SelectedInc= await GetVictimById(victim.VictId);
 
-            if (SelectedInc == null || string.IsNullOrEmpty(SelectedInc.IncNumber))
+            if (SelectedInc == null )
             {
-                response.ErrorMessages = new List<string>() { "Incident does not exist with given Number" };
+                response.ErrorMessages = new List<string>() { "Victim does not exist with given Id" };
                 return response;
             }
             try
             {
-                _context.Entry(SelectedInc).CurrentValues.SetValues(incident);
+                _context.Entry(SelectedInc).CurrentValues.SetValues(victim);
                 _context.SaveChanges();
             }
              
@@ -105,7 +104,7 @@ namespace MyHSE_Backend.DataRepository.Implementation
                 response.ErrorMessages.Add(ex.StackTrace);
                 return response;
             }
-            response.UniqueId = incident.Id;
+            response.UniqueId = victim.VictId;
             response.IsUpdated = true;
             return response;
             

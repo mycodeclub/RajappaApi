@@ -1,21 +1,37 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
+using Microsoft.OpenApi.Extensions;
+using MyHSE_Backend.Common;
 
 namespace MyHSE_Backend.Data.DbModels.LK01
 {
-    public partial class Incident
+    public partial class LK01Header
     {
         [Key]
         [Display(Name = "Unique ID")]
         public Guid Id { get; set; }
 
         [Display(Name = "Request Id")]
-        public string RequestId { get; set; }
+        [ReadOnly(true)]
+        public string RequestId { get; set; } = StaticData.FormNames.LK01.GetDisplayName() + DateTime.Now.ToString("yyyyMMddHHmmssffffff");
+
+        [Display(Name = "Financial Year")]
+        public int? FYear { get; set; }
+
+        [Display(Name = "Name")]
+        public string Name { get; set; }
+
+        [Display(Name = "Description")]
+        public string Description { get; set; }
+
+        [Display(Name = "Request Status")]
+        public string RStatus { get; set; }
 
         [Display(Name = "Request Type")]
         public string RequestType { get; set; }
 
-        [Display(Name = "Incident Number")]
-        public string IncNumber { get; set; }
+        [Display(Name = "Incident Type")]
+        public string? IncidentType { get; set; }
 
         [Display(Name = "Incident Date")]
         public DateTime? IncDate { get; set; }
@@ -41,24 +57,18 @@ namespace MyHSE_Backend.Data.DbModels.LK01
         [Display(Name = "Comments")]
         public string? Comments { get; set; }
 
-        [Display(Name = "Victim Number")]
-        public int? VictNumber { get; set; }
-
-        [Display(Name = "Number of Sick Leaves")]
-        public int? NoSickLeaves { get; set; }
-
         [Display(Name = "Department Id")]
-        public Guid? DepId { get; set; }
-
-        [Display(Name = "Financial Year")]
-        public int? Financial { get; set; }
+        public Guid? DeptId { get; set; }
 
         [Display(Name = "Created On")]
         public DateTime? CreatedOn { get; set; }
+
         [Display(Name = "Modified On")]
         public DateTime? ModifiedOn { get; set; }
+
         [Display(Name = "Created By")]
         public string? CreatedBy { get; set; }
+
         [Display(Name = "Modified By")]
         public string? ModifiedBy { get; set; }
     }

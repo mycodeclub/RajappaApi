@@ -21,5 +21,12 @@ namespace MyHSE_Backend.Common
             //TicketScanner,
             //Guest
         }
+
+        public enum FormNames
+        {
+            LK01,
+
+
+        }
     }
 }

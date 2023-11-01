@@ -1,37 +1,39 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using MyHSE_Backend.Data.DbModels.LK01;
 using MyHSE_Backend.Data.DbModels.Settings;
+using MyHSE_Backend.Data.DbModels.User;
 using MyHSE_Backend.Data.EF_Core;
 using MyHSE_Backend.Data.ViewModels;
 using MyHSE_Backend.Data.ViewModels.User;
 using MyHSE_Backend.DataRepository.Implementation;
 using MyHSE_Backend.DataRepository.Interfaces;
 
-namespace MyHSE_Backend.Controllers.Settings
+namespace MyHSE_Backend.Controllers.User
 {
 
 
     [Route("api/[controller]")]
     [ApiController]
     [AllowAnonymous]
-    public class CommentController : ControllerBase
+    public class VictimController : ControllerBase
     {
         private readonly IConfiguration _configuration;
-        private readonly ICommentDR commentService;
+        private readonly IVictimDR _victimService;
         private readonly AppDbContext context;
-        public CommentController(AppDbContext context, IConfiguration configuration)
+        public VictimController(AppDbContext context, IConfiguration configuration)
         {
             _configuration = configuration;
-            commentService = new CommentDR(context, _configuration);
+            _victimService = new VictimDR(context, _configuration);
         }
 
-        [HttpGet("GetAllCommentsByRequestId")]
-        public async Task<ActionResult<LoginVM>> GetAllCommentsByRequestId(string requestId)
+        [HttpGet("GetAllVictims")]
+        public async Task<ActionResult<LoginVM>> GetAllVictims()
         {
 
             try
             {
-                var result = await commentService.GetAllCommentsByRequestId(requestId);
+                var result = await _victimService.GetAllVictims();
                 if (result != null && result.Any())
                     return Ok(result);
                 else
@@ -40,13 +42,13 @@ namespace MyHSE_Backend.Controllers.Settings
             catch (Exception ex) { return BadRequest(ex.Message); }
         }
         
-        [HttpGet("GetCommentById")]
-        public async Task<ActionResult<RequestComments>> GetCommentById(Guid id)
+        [HttpGet("GetVictimByRequestId")]
+        public async Task<ActionResult<LK01Victim>> GetVictimByNumber(Guid number)
         {
 
             try
             {
-                var result = await commentService.GetCommentById(id);
+                var result = await _victimService.GetVictimById(number);
                 if (result != null )
                     return Ok(result);
                 else
@@ -55,14 +57,14 @@ namespace MyHSE_Backend.Controllers.Settings
             catch (Exception ex) { return BadRequest(ex.Message); }
         }
 
-        [HttpPut("UpdateComment")]
-        public async Task<ActionResult<UpdateResponse>> UpdateComment(RequestComments comment)
+        [HttpPut("UpdateVictim")]
+        public async Task<ActionResult<UpdateResponse>> UpdateVictim(LK01Victim incident)
         {
             if (ModelState.IsValid)
             {
                 try
                 {
-                    var result = await commentService.UpdateComment(comment);
+                    var result = await _victimService.UpdateVictim(incident);
 
                     if (result == null)
                     {
@@ -80,14 +82,14 @@ namespace MyHSE_Backend.Controllers.Settings
             return BadRequest("Invalid Input");
         }
 
-        [HttpPost("CreateComment")]
-        public async Task<ActionResult<CreatedResult>> CreateComment(RequestComments comment)
+        [HttpPost("CreateVictim")]
+        public async Task<ActionResult<CreatedResult>> CreateVictim(LK01Victim incident)
         {
             if (ModelState.IsValid)
             {
                 try
                 {
-                    var result = await commentService.CreateComment(comment);
+                    var result = await _victimService.CreateVictim(incident);
 
                     if (result == null)
                     {

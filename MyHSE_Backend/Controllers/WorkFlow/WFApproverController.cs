@@ -55,7 +55,7 @@ namespace MyHSE_Backend.Controllers.WorkFlow
             catch (Exception ex) { return BadRequest(ex.Message); }
         }
 
-        [HttpPost("UpdateWFApprover")]
+        [HttpPut("UpdateWFApprover")]
         public async Task<ActionResult<UpdateResponse>> UpdateWFApprover(WFApprover wFApprover)
         {
             if (ModelState.IsValid)

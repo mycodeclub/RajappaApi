@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using MyHSE_Backend.Data.EF_Core;
 
@@ -11,9 +12,11 @@ using MyHSE_Backend.Data.EF_Core;
 namespace MyHSE_Backend.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20231101074958_LK01Header")]
+    partial class LK01Header
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -1240,15 +1243,15 @@ namespace MyHSE_Backend.Migrations
 
                     b.Property<string>("BUSFTYPE")
                         .IsRequired()
-                        .HasColumnType("nvarchar(450)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("BUSMTYPE")
                         .IsRequired()
-                        .HasColumnType("nvarchar(450)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("BUSOBJTYPE")
                         .IsRequired()
-                        .HasColumnType("nvarchar(450)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("CHANGEDBY")
                         .IsRequired()
@@ -1272,25 +1275,13 @@ namespace MyHSE_Backend.Migrations
 
                     b.Property<string>("ROLEID")
                         .IsRequired()
-                        .HasColumnType("nvarchar(450)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Role")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("nvarchar(1)");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("BUSFTYPE")
-                        .IsUnique();
-
-                    b.HasIndex("BUSMTYPE")
-                        .IsUnique();
-
-                    b.HasIndex("BUSOBJTYPE")
-                        .IsUnique();
-
-                    b.HasIndex("ROLEID")
-                        .IsUnique();
 
                     b.ToTable("RolePermissions");
                 });
@@ -1330,16 +1321,13 @@ namespace MyHSE_Backend.Migrations
 
                     b.Property<string>("NAME")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("nvarchar(1)");
 
                     b.Property<string>("Role")
                         .IsRequired()
-                        .HasColumnType("nvarchar(450)");
+                        .HasColumnType("nvarchar(1)");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("Role")
-                        .IsUnique();
 
                     b.ToTable("Roles");
                 });
@@ -1367,16 +1355,13 @@ namespace MyHSE_Backend.Migrations
 
                     b.Property<string>("NAME")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("nvarchar(1)");
 
                     b.Property<string>("USGRP")
                         .IsRequired()
-                        .HasColumnType("nvarchar(450)");
+                        .HasColumnType("nvarchar(1)");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("USGRP")
-                        .IsUnique();
 
                     b.ToTable("UserGroups");
                 });
@@ -1413,7 +1398,7 @@ namespace MyHSE_Backend.Migrations
 
                     b.Property<string>("ROLE")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("nvarchar(1)");
 
                     b.Property<string>("ROLEID")
                         .IsRequired()
@@ -1589,10 +1574,6 @@ namespace MyHSE_Backend.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("TELMB")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("TELNR")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 

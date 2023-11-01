@@ -22,6 +22,12 @@ public partial class WFApprover
     [Display(Name = "Cost Center")]
     public string? Kostl { get; set; }
 
+    [Display(Name = "Department ID")]
+    public Guid DepartmentId { get; set; }
+
+    [Display(Name = "Division ID")]
+    public Guid DivisionId { get; set; }
+
     [Display(Name = "Business Module")]
     public string? BusMType { get; set; }
 
