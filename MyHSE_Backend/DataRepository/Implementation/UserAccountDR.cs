@@ -23,7 +23,7 @@ namespace MyHSE_Backend.DataRepository.Implementation
             _context = context;
             _config = config;
 
-        } 
+        }
         public async Task<LoginResponse> Login(string LoginName, string Password)
         {
             var response = new LoginResponse() { };
@@ -32,8 +32,9 @@ namespace MyHSE_Backend.DataRepository.Implementation
                 var _appUser = await GetUserByEmail(LoginName);
                 response.Token = await CreateJwtToken(LoginName);
                 response.IsLoginSuccess = true;
-                response.FName = _appUser.FNAME;
-
+                response.FName = !string.IsNullOrWhiteSpace(_appUser.FNAME) ? _appUser.FNAME : response.FName;
+                response.LName = !string.IsNullOrWhiteSpace(_appUser.LNAME) ? _appUser.LNAME : response.LName;
+                response.Email = !string.IsNullOrWhiteSpace(_appUser.EMAILID) ? _appUser.EMAILID : response.Email;
             }
             else response.ErrorMessages = new List<string>() { "Invalid Credentials " };
             return response;
