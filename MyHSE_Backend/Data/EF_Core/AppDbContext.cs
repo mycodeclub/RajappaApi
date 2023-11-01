@@ -14,6 +14,17 @@ namespace MyHSE_Backend.Data.EF_Core
              
 //            modelBuilder.Entity<Users>().HasIndex(u => u.Login).IsUnique();
             modelBuilder.Entity<UserGroups>().HasIndex(u => u.USGRP).IsUnique();
+            modelBuilder.Entity<Roles>().HasIndex(u => u.Role).IsUnique();
+            modelBuilder.Entity<RolePermission>().HasIndex(u => u.ROLEID).IsUnique();
+
+           // modelBuilder.Entity<RolePermission>().HasIndex(u => u.ROLE).IsUnique();
+
+            modelBuilder.Entity<RolePermission>().HasIndex(u => u.BUSMTYPE).IsUnique();
+
+            modelBuilder.Entity<RolePermission>().HasIndex(u => u.BUSOBJTYPE).IsUnique();
+
+            modelBuilder.Entity<RolePermission>().HasIndex(u => u.BUSFTYPE).IsUnique();
+
 
 
         }

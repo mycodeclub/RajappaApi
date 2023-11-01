@@ -29,8 +29,11 @@ namespace MyHSE_Backend.DataRepository.Implementation
             var response = new LoginResponse() { };
             if (await ValidateCredentials(LoginName, Password))
             {
+                var _appUser = await GetUserByEmail(LoginName);
                 response.Token = await CreateJwtToken(LoginName);
                 response.IsLoginSuccess = true;
+                response.FName = _appUser.FNAME;
+
             }
             else response.ErrorMessages = new List<string>() { "Invalid Credentials " };
             return response;
