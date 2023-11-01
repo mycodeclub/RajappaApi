@@ -9,7 +9,13 @@ namespace MyHSE_Backend.Data.EF_Core
         public AppDbContext(DbContextOptions<AppDbContext> options) : base(options) { }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+
             base.OnModelCreating(modelBuilder);
+             
+//            modelBuilder.Entity<Users>().HasIndex(u => u.Login).IsUnique();
+            modelBuilder.Entity<UserGroups>().HasIndex(u => u.USGRP).IsUnique();
+
+
         }
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
@@ -27,22 +33,22 @@ namespace MyHSE_Backend.Data.EF_Core
         public DbSet<Security> Security { get; set; }
         //------ Settings Entity
 
-        public DbSet<MyHSE_Backend.Data.DbModels.Settings.BusinessModules> BusinessModules{ get; set; }
+        public DbSet<MyHSE_Backend.Data.DbModels.Settings.BusinessModules> BusinessModules { get; set; }
         public DbSet<MyHSE_Backend.Data.DbModels.Settings.BusinessObjects> BusinessObjects { get; set; }
         public DbSet<MyHSE_Backend.Data.DbModels.Settings.Classification> Classification { get; set; }
-        public DbSet<MyHSE_Backend.Data.DbModels.Settings.Organizations> Organizations{ get; set; }
-        public DbSet<MyHSE_Backend.Data.DbModels.Settings.Partners> Partners{ get; set; }
-        public DbSet<MyHSE_Backend.Data.DbModels.Settings.Plants> Plants{ get; set; }
-        public DbSet<MyHSE_Backend.Data.DbModels.Settings.PurchasingGroups> PurchasingGroups{ get; set; }
-        public DbSet<MyHSE_Backend.Data.DbModels.Settings.PurchasingOrganizations> PurchasingOrganizations{ get; set; }
-        public DbSet<MyHSE_Backend.Data.DbModels.Settings.Units> Units{ get; set; }
+        public DbSet<MyHSE_Backend.Data.DbModels.Settings.Organizations> Organizations { get; set; }
+        public DbSet<MyHSE_Backend.Data.DbModels.Settings.Partners> Partners { get; set; }
+        public DbSet<MyHSE_Backend.Data.DbModels.Settings.Plants> Plants { get; set; }
+        public DbSet<MyHSE_Backend.Data.DbModels.Settings.PurchasingGroups> PurchasingGroups { get; set; }
+        public DbSet<MyHSE_Backend.Data.DbModels.Settings.PurchasingOrganizations> PurchasingOrganizations { get; set; }
+        public DbSet<MyHSE_Backend.Data.DbModels.Settings.Units> Units { get; set; }
 
         //-----Docs Entity
 
 
-        public DbSet<MyHSE_Backend.Data.DbModels.Docs.Documents> Documents{ get; set; }
-        public DbSet<MyHSE_Backend.Data.DbModels.Docs.ObjectStatus> ObjectStatus{ get; set; }
-        public DbSet<MyHSE_Backend.Data.DbModels.Docs.WorkflowLog> WorkflowLog{ get; set; }
+        public DbSet<MyHSE_Backend.Data.DbModels.Docs.Documents> Documents { get; set; }
+        public DbSet<MyHSE_Backend.Data.DbModels.Docs.ObjectStatus> ObjectStatus { get; set; }
+        public DbSet<MyHSE_Backend.Data.DbModels.Docs.WorkflowLog> WorkflowLog { get; set; }
 
 
 

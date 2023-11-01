@@ -23,10 +23,7 @@ namespace MyHSE_Backend.DataRepository.Implementation
             _context = context;
             _config = config;
 
-        }
-
-
-
+        } 
         public async Task<LoginResponse> Login(string LoginName, string Password)
         {
             var response = new LoginResponse() { };

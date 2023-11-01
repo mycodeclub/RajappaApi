@@ -13,13 +13,13 @@ namespace MyHSE_Backend.Data.DbModels.User
         public Guid Id { get; set; }
 
         [Display(Name = "User Group")]
-        public char USGRP { get; set; } 
+        public string USGRP { get; set; }
 
         [Display(Name = "Description")]
-        public char NAME { get; set; } 
+        public string NAME { get; set; }
 
         [Display(Name = "Active [Yes/No]")]
-        public bool ACTIVE { get; set; } 
+        public bool ACTIVE { get; set; }
 
 
 
@@ -29,16 +29,16 @@ namespace MyHSE_Backend.Data.DbModels.User
 
         [Display(Name = "Created Date")]
 
-        public DateTime CREATEDON { get; set; } 
+        public DateTime CREATEDON { get; set; }
 
 
 
         [Display(Name = "Changed By")]
-        public DateTime MODIFIEDBY { get; set; } 
+        public DateTime MODIFIEDBY { get; set; }
 
 
         [Display(Name = "Changed Date")]
-        public DateTime MODIFIEDON { get; set; } 
+        public DateTime MODIFIEDON { get; set; }
 
     }
 }

@@ -13,7 +13,7 @@ namespace MyHSE_Backend.Controllers.User
 {
     [Route("api/[controller]")]
     [ApiController]
-    [Authorize]
+    //    [Authorize]
     public class UserGroupsController : ControllerBase
     {
         private readonly AppDbContext _context;
@@ -88,14 +88,27 @@ namespace MyHSE_Backend.Controllers.User
         [HttpPost]
         public async Task<ActionResult<UserGroups>> PostuserGroups(UserGroups userGroups)
         {
-            if (_context.UserGroups == null)
+            if (ModelState.IsValid)
             {
-                return Problem("Entity set 'AppDbContext.userGroups'  is null.");
-            }
-            _context.UserGroups.Add(userGroups);
-            await _context.SaveChangesAsync();
+                try
+                {
+                    if (_context.UserGroups == null)
+                    {
+                        return Problem("Entity set 'AppDbContext.userGroups'  is null.");
+                    }
+                    _context.UserGroups.Add(userGroups);
+                    await _context.SaveChangesAsync();
 
-            return Ok(CreatedAtAction("GetuserGroups", new { id = userGroups.Id }, userGroups));
+                    return Ok(CreatedAtAction("GetuserGroups", new { id = userGroups.Id }, userGroups));
+                }
+                catch (Exception ex)
+                {
+                    return BadRequest(ex.InnerException);
+
+                }
+            }
+            return BadRequest("Bad Request " + ModelState.ErrorCount);
+
         }
 
         // DELETE: api/userGroups/5
