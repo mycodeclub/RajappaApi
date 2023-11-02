@@ -81,7 +81,7 @@ namespace MyHSE_Backend.Controllers.WorkFlow
         }
 
         [HttpPost("CreateWFGeneral")]
-        public async Task<ActionResult<CreatedResult>> CreateWFGeneral(WFGeneral wFGeneral)
+        public async Task<ActionResult<CreateResponse>> CreateWFGeneral(WFGeneral wFGeneral)
         {
             if (ModelState.IsValid)
             {

@@ -81,7 +81,7 @@ namespace MyHSE_Backend.Controllers.WorkFlow
         }
 
         [HttpPost("CreateWFContent")]
-        public async Task<ActionResult<CreatedResult>> CreateWFContent(WFContent wFContent)
+        public async Task<ActionResult<CreateResponse>> CreateWFContent(WFContent wFContent)
         {
             if (ModelState.IsValid)
             {

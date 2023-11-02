@@ -81,7 +81,7 @@ namespace MyHSE_Backend.Controllers.WorkFlow
         }
 
         [HttpPost("CreateWFApprX")]
-        public async Task<ActionResult<CreatedResult>> CreateWFApprX(WFApprX wFApprX)
+        public async Task<ActionResult<CreateResponse>> CreateWFApprX(WFApprX wFApprX)
         {
             if (ModelState.IsValid)
             {

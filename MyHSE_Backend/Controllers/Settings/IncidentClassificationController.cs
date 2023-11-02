@@ -81,7 +81,7 @@ namespace MyHSE_Backend.Controllers.Settings
         }
 
         [HttpPost("CreateIncidentClassification")]
-        public async Task<ActionResult<CreatedResult>> CreateIncidentClassification(IncidentClassification incidentClassification)
+        public async Task<ActionResult<CreateResponse>> CreateIncidentClassification(IncidentClassification incidentClassification)
         {
             if (ModelState.IsValid)
             {

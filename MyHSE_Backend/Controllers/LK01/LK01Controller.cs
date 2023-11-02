@@ -21,19 +21,33 @@ namespace MyHSE_Backend.Controllers.User
     {
         private readonly IConfiguration _configuration;
         private readonly ILK01DR _incidentService;
-        private readonly VictimDR _victimService;
         private readonly AppDbContext context;
         public LK01Controller(AppDbContext context, IConfiguration configuration)
         {
             _configuration = configuration;
             _incidentService = new LK01DR(context, _configuration);
-            _victimService = new VictimDR(context, _configuration);
         }
+
+        [HttpGet("GetAllMasterData")]
+        public async Task<ActionResult<MasterDataVM>> GetAllMasterData()
+        {
+            try
+            {
+                var result = await _incidentService.GetAllMasterData();
+
+                if (result != null )
+                    return Ok(result);
+                else
+                    return NotFound();
+            }
+            catch (Exception ex) { return BadRequest(ex.Message); }
+        }
+
+
 
         [HttpGet("GetAllLK01Incidents")]
         public async Task<ActionResult<LK01VM>> GetAllLK01Incidents()
         {
-
             try
             {
                var  result = await _incidentService.GetAllIncidents();
@@ -47,7 +61,7 @@ namespace MyHSE_Backend.Controllers.User
         }
         
         [HttpGet("GetLK01ByRequestId")]
-        public async Task<ActionResult<LK01Header>> GetLK01ByRequestId(string requestId)
+        public async Task<ActionResult<LK01VM>> GetLK01ByRequestId(string requestId)
         {
 
             try
@@ -87,7 +101,7 @@ namespace MyHSE_Backend.Controllers.User
         }
 
         [HttpPost("CreateLK01Incident")]
-        public async Task<ActionResult<CreatedResult>> CreateLK01Incident(LK01VM incident)
+        public async Task<ActionResult<CreateResponse>> CreateLK01Incident(LK01VM incident)
         {
             if (ModelState.IsValid)
             {

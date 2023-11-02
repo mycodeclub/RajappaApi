@@ -14,6 +14,7 @@ namespace MyHSE_Backend.Controllers.Settings
     [Route("api/[controller]")]
     [ApiController]
     [AllowAnonymous]
+    [Authorize]
     public class VictimCategoryController : ControllerBase
     {
         private readonly IConfiguration _configuration;
@@ -81,7 +82,7 @@ namespace MyHSE_Backend.Controllers.Settings
         }
 
         [HttpPost("CreateVictimCategory")]
-        public async Task<ActionResult<CreatedResult>> CreateVictimCategory(VictimCategory incidentClassification)
+        public async Task<ActionResult<CreateResponse>> CreateVictimCategory(VictimCategory incidentClassification)
         {
             if (ModelState.IsValid)
             {

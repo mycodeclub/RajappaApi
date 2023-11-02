@@ -83,7 +83,7 @@ namespace MyHSE_Backend.Controllers.User
         }
 
         [HttpPost("CreateVictim")]
-        public async Task<ActionResult<CreatedResult>> CreateVictim(LK01Victim incident)
+        public async Task<ActionResult<CreateResponse>> CreateVictim(LK01Victim incident)
         {
             if (ModelState.IsValid)
             {

@@ -78,6 +78,8 @@ namespace MyHSE_Backend.Data.EF_Core
         public DbSet<RequestComments> Comments { get; set; }
         public DbSet<Department> Departments { get; set; }
 
+        public DbSet<Division> Divisions { get; set; }
+
         public DbSet<WFGeneral> WFGenerals { get; set; }
 
         public DbSet<WFApprover> WFApprovers { get; set; }

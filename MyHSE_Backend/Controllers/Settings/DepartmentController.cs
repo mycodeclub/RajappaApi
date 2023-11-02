@@ -81,7 +81,7 @@ namespace MyHSE_Backend.Controllers.Settings
         }
 
         [HttpPost("CreateDepartment")]
-        public async Task<ActionResult<CreatedResult>> CreateDepartment(Department incidentClassification)
+        public async Task<ActionResult<CreateResponse>> CreateDepartment(Department incidentClassification)
         {
             if (ModelState.IsValid)
             {

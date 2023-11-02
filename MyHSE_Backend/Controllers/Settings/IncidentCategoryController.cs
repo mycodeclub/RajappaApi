@@ -81,7 +81,7 @@ namespace MyHSE_Backend.Controllers.Settings
         }
 
         [HttpPost("CreateIncidentCategory")]
-        public async Task<ActionResult<CreatedResult>> CreateIncidentCategory(IncidentCategory incidentCategory)
+        public async Task<ActionResult<CreateResponse>> CreateIncidentCategory(IncidentCategory incidentCategory)
         {
             if (ModelState.IsValid)
             {

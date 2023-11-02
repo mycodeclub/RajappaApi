@@ -81,7 +81,7 @@ namespace MyHSE_Backend.Controllers.Settings
         }
 
         [HttpPost("CreateComment")]
-        public async Task<ActionResult<CreatedResult>> CreateComment(RequestComments comment)
+        public async Task<ActionResult<CreateResponse>> CreateComment(RequestComments comment)
         {
             if (ModelState.IsValid)
             {

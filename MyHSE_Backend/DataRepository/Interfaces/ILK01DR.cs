@@ -8,6 +8,7 @@ namespace MyHSE_Backend.DataRepository.Interfaces
     public interface ILK01DR
     {
         public Task<IEnumerable<LK01Header>> GetAllLK01Headers();
+        public Task<MasterDataVM> GetAllMasterData();
 
         public Task<LK01Header> GetLK01HeaderByRequestId(string Number);
 

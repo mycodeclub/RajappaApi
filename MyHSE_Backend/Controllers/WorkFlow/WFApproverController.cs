@@ -81,7 +81,7 @@ namespace MyHSE_Backend.Controllers.WorkFlow
         }
 
         [HttpPost("CreateWFApprover")]
-        public async Task<ActionResult<CreatedResult>> CreateWFApprover(WFApprover wFApprover)
+        public async Task<ActionResult<CreateResponse>> CreateWFApprover(WFApprover wFApprover)
         {
             if (ModelState.IsValid)
             {

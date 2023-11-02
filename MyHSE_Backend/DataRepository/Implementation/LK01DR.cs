@@ -95,6 +95,18 @@ namespace MyHSE_Backend.DataRepository.Implementation
             return incidents;
         }
 
+
+        public async Task<MasterDataVM> GetAllMasterData()
+        {
+            MasterDataVM masterdata = new MasterDataVM();
+            masterdata.IncidentCategories = _context.IncidentCategories.Where(a => a.Active == true).ToList();
+            masterdata.IncidentClassifications = _context.IncidentClassifications.Where(a => a.Active == true).ToList();
+            masterdata.VictimCategories = _context.VictimCategories.Where(a => a.Active == true).ToList();
+            masterdata.Departments = _context.Departments.Where(a => a.Active == true).ToList();
+            masterdata.Divisions = _context.Divisions.Where(a => a.Active == true).ToList();
+
+            return masterdata;
+        }
         public async Task<IEnumerable<LK01VM>> GetAllIncidents()
         {
 
