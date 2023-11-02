@@ -16,5 +16,6 @@ namespace MyHSE_Backend.Data.ViewModels.LK01
         public List<Documents> DocumentsLst { get; set; }
 
         public List<WorkflowLog> WorkFlowLogs { get; set; }
+
     }
 }

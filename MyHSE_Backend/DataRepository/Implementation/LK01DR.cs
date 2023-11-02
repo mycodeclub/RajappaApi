@@ -71,7 +71,8 @@ namespace MyHSE_Backend.DataRepository.Implementation
             {
                 _context.LK01Headers.Add(incident.Header);
                 _context.Victims.AddRange(incident.Victims);
-                _context.AddRange(incident.CommentsLst);
+                _context.Comments.AddRange(incident.CommentsLst);
+                _context.WorkflowLog.AddRange(incident.WorkFlowLogs);
                 try { await _context.SaveChangesAsync(); }
                 catch (Exception ex)
                 {
@@ -104,6 +105,7 @@ namespace MyHSE_Backend.DataRepository.Implementation
             masterdata.VictimCategories = _context.VictimCategories.Where(a => a.Active == true).ToList();
             masterdata.Departments = _context.Departments.Where(a => a.Active == true).ToList();
             masterdata.Divisions = _context.Divisions.Where(a => a.Active == true).ToList();
+            masterdata.WFApprovers = _context.WFApprovers.Where(a => a.Active == true).ToList();
 
             return masterdata;
         }
