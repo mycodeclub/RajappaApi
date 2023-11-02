@@ -111,16 +111,23 @@ namespace MyHSE_Backend.DataRepository.Implementation
         }
         public async Task<IEnumerable<LK01VM>> GetAllIncidents()
         {
+            List<LK01VM> Incidentslst = new List<LK01VM>();
+             await _context.LK01Headers.ForEachAsync(header =>
+            {
+                if (header != null)
+                {
+                    Incidentslst.Add(new LK01VM()
+                    {
+                        Header = header,
+                        CommentsLst = _context.Comments.Where(c => c.RequestId.Equals(header.RequestId)).ToList(),
+                        Victims = _context.Victims.Where(v => v.RequestId.Equals(header.RequestId)).ToList(),
+                        WorkFlowLogs = _context.WorkflowLog.Where(v => v.RequestId.Equals(header.RequestId)).ToList(),
+                        DocumentsLst = _context.Documents.Where(v => v.RequestID.Equals(header.RequestId)).ToList(),
+                    });
+                }
+            });
 
-            return await _context.LK01Headers.Select(header =>
-              new LK01VM()
-              {
-                  Header = header,
-                  CommentsLst = _context.Comments.Where(c => c.RequestId.Equals(header.RequestId)).ToList(),
-                  Victims = _context.Victims.Where(v => v.RequestId.Equals(header.RequestId)).ToList(),
-                  WorkFlowLogs = _context.WorkflowLog.Where(v => v.RequestId.Equals(header.RequestId)).ToList(),
-                  DocumentsLst = _context.Documents.Where(v => v.RequestID.Equals(header.RequestId)).ToList(),
-              }).ToListAsync();
+            return Incidentslst;
         }
 
         public async Task<LK01Header> GetLK01HeaderByRequestId(string requestId)
@@ -145,8 +152,8 @@ namespace MyHSE_Backend.DataRepository.Implementation
                     incident.Header = Header;
                     incident.CommentsLst = _context.Comments.Where(c => c.RequestId.Equals(requestId)).ToList();
                     incident.Victims = _context.Victims.Where(v => v.RequestId.Equals(requestId)).ToList();
-                    incident.WorkFlowLogs = _context.WorkflowLog.Where(v => v.RequestId.Equals(requestId)).ToList(),
-                    incident.DocumentsLst = _context.Documents.Where(v => v.RequestID.Equals(requestId)).ToList(),
+                    incident.WorkFlowLogs = _context.WorkflowLog.Where(v => v.RequestId.Equals(requestId)).ToList();
+                    incident.DocumentsLst = _context.Documents.Where(v => v.RequestID.Equals(requestId)).ToList();
                 }
                 return incident;
             }

@@ -11,7 +11,6 @@ using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);
 var config = builder.Configuration;
-
 var MyAllowSpecificOrigins = "_myAllowSpecificOrigins";
 
 builder.Services.AddCors(Options =>
@@ -19,9 +18,11 @@ builder.Services.AddCors(Options =>
     Options.AddPolicy(name: MyAllowSpecificOrigins,
         policy =>
         {
-
             policy.WithOrigins("https://localhost:7267/")
                 .AllowAnyHeader()
+                .AllowAnyMethod();
+        });
+});
                 .AllowAnyMethod();
 
         });

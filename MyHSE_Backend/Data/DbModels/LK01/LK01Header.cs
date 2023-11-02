@@ -37,7 +37,7 @@ namespace MyHSE_Backend.Data.DbModels.LK01
         public DateTime? IncDate { get; set; }
 
         [Display(Name = "Incident Time")]
-        public TimeSpan? IncTime { get; set; }
+        public TimeSpan? IncTime { get; set; } = DateTime.Now.TimeOfDay;
 
         [Display(Name = "Summary During Incident")]
         public string? SumDuringInc { get; set; }
