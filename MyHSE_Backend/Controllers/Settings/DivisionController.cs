@@ -1,39 +1,37 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using MyHSE_Backend.Data.DbModels.LK01;
 using MyHSE_Backend.Data.DbModels.Settings;
-using MyHSE_Backend.Data.DbModels.User;
 using MyHSE_Backend.Data.EF_Core;
 using MyHSE_Backend.Data.ViewModels;
 using MyHSE_Backend.Data.ViewModels.User;
 using MyHSE_Backend.DataRepository.Implementation;
 using MyHSE_Backend.DataRepository.Interfaces;
 
-namespace MyHSE_Backend.Controllers.User
+namespace MyHSE_Backend.Controllers.Settings
 {
 
 
     [Route("api/[controller]")]
     [ApiController]
     [AllowAnonymous]
-    public class VictimController : ControllerBase
+    public class DivisionController : ControllerBase
     {
         private readonly IConfiguration _configuration;
-        private readonly IVictimDR _victimService;
+        private readonly IDivisionDR divisionService;
         private readonly AppDbContext context;
-        public VictimController(AppDbContext context, IConfiguration configuration)
+        public DivisionController(AppDbContext context, IConfiguration configuration)
         {
             _configuration = configuration;
-            _victimService = new VictimDR(context, _configuration);
+            divisionService = new DivisionDR(context, _configuration);
         }
 
-        [HttpGet("GetAllVictims")]
-        public async Task<ActionResult<LoginVM>> GetAllVictims()
+        [HttpGet("GetAllDivisions")]
+        public async Task<ActionResult<LoginVM>> GetAllDivisions()
         {
 
             try
             {
-                var result = await _victimService.GetAllVictims();
+                var result = await divisionService.GetAllDivisions();
                 if (result != null && result.Any())
                     return Ok(result);
                 else
@@ -42,13 +40,13 @@ namespace MyHSE_Backend.Controllers.User
             catch (Exception ex) { return BadRequest(ex.Message); }
         }
         
-        [HttpGet("GetVictimByRequestId")]
-        public async Task<ActionResult<LK01Victim>> GetVictimByNumber(Guid number)
+        [HttpGet("GetDivisionById")]
+        public async Task<ActionResult<Division>> GetDivisionById(Guid id)
         {
 
             try
             {
-                var result = await _victimService.GetVictimById(number);
+                var result = await divisionService.GetDivisionById(id);
                 if (result != null )
                     return Ok(result);
                 else
@@ -57,14 +55,14 @@ namespace MyHSE_Backend.Controllers.User
             catch (Exception ex) { return BadRequest(ex.Message); }
         }
 
-        [HttpPut("UpdateVictim")]
-        public async Task<ActionResult<UpdateResponse>> UpdateVictim(LK01Victim victim)
+        [HttpPut("UpdateDivision")]
+        public async Task<ActionResult<UpdateResponse>> UpdateDivision(Division division)
         {
             if (ModelState.IsValid)
             {
                 try
                 {
-                    var result = await _victimService.UpdateVictim(victim);
+                    var result = await divisionService.UpdateDivision(division);
 
                     if (result == null)
                     {
@@ -82,14 +80,14 @@ namespace MyHSE_Backend.Controllers.User
             return BadRequest("Invalid Input");
         }
 
-        [HttpPost("CreateVictim")]
-        public async Task<ActionResult<CreateResponse>> CreateVictim(LK01Victim victim)
+        [HttpPost("CreateDivision")]
+        public async Task<ActionResult<CreateResponse>> CreateDivision(Division division)
         {
             if (ModelState.IsValid)
             {
                 try
                 {
-                    var result = await _victimService.CreateVictim(victim);
+                    var result = await divisionService.CreateDivision(division);
 
                     if (result == null)
                     {

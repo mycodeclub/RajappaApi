@@ -17,12 +17,12 @@ namespace MyHSE_Backend.Controllers.Settings
     public class DepartmentController : ControllerBase
     {
         private readonly IConfiguration _configuration;
-        private readonly IDepartmentDR incidentClassificationService;
+        private readonly IDepartmentDR departmentService;
         private readonly AppDbContext context;
         public DepartmentController(AppDbContext context, IConfiguration configuration)
         {
             _configuration = configuration;
-            incidentClassificationService = new DepartmentDR(context, _configuration);
+            departmentService = new DepartmentDR(context, _configuration);
         }
 
         [HttpGet("GetAllDepartments")]
@@ -31,7 +31,7 @@ namespace MyHSE_Backend.Controllers.Settings
 
             try
             {
-                var result = await incidentClassificationService.GetAllDepartments();
+                var result = await departmentService.GetAllDepartments();
                 if (result != null && result.Any())
                     return Ok(result);
                 else
@@ -46,7 +46,7 @@ namespace MyHSE_Backend.Controllers.Settings
 
             try
             {
-                var result = await incidentClassificationService.GetDepartmentById(id);
+                var result = await departmentService.GetDepartmentById(id);
                 if (result != null )
                     return Ok(result);
                 else
@@ -56,13 +56,13 @@ namespace MyHSE_Backend.Controllers.Settings
         }
 
         [HttpPut("UpdateDepartment")]
-        public async Task<ActionResult<UpdateResponse>> UpdateDepartment(Department incidentClassification)
+        public async Task<ActionResult<UpdateResponse>> UpdateDepartment(Department department)
         {
             if (ModelState.IsValid)
             {
                 try
                 {
-                    var result = await incidentClassificationService.UpdateDepartment(incidentClassification);
+                    var result = await departmentService.UpdateDepartment(department);
 
                     if (result == null)
                     {
@@ -81,13 +81,13 @@ namespace MyHSE_Backend.Controllers.Settings
         }
 
         [HttpPost("CreateDepartment")]
-        public async Task<ActionResult<CreateResponse>> CreateDepartment(Department incidentClassification)
+        public async Task<ActionResult<CreateResponse>> CreateDepartment(Department department)
         {
             if (ModelState.IsValid)
             {
                 try
                 {
-                    var result = await incidentClassificationService.CreateDepartment(incidentClassification);
+                    var result = await departmentService.CreateDepartment(department);
 
                     if (result == null)
                     {
