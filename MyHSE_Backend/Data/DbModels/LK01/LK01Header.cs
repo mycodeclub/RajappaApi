@@ -13,22 +13,22 @@ namespace MyHSE_Backend.Data.DbModels.LK01
 
         [Display(Name = "Request Id")]
         [ReadOnly(true)]
-        public string RequestId { get; set; } = StaticData.FormNames.LK01.GetDisplayName() + DateTime.Now.ToString("yyyyMMddHHmmssffffff");
+        public string RequestId { get; set; } 
 
         [Display(Name = "Financial Year")]
         public int? FYear { get; set; }
 
         [Display(Name = "Name")]
-        public string Name { get; set; }
+        public string? Name { get; set; }
 
         [Display(Name = "Description")]
-        public string Description { get; set; }
+        public string? Description { get; set; }
 
         [Display(Name = "Request Status")]
-        public string RStatus { get; set; }
+        public string? RStatus { get; set; }
 
         [Display(Name = "Request Type")]
-        public string RequestType { get; set; }
+        public string? RequestType { get; set; }
 
         [Display(Name = "Incident Type")]
         public string? IncidentType { get; set; }
@@ -37,7 +37,7 @@ namespace MyHSE_Backend.Data.DbModels.LK01
         public DateTime? IncDate { get; set; }
 
         [Display(Name = "Incident Time")]
-        public TimeSpan? IncTime { get; set; } = DateTime.Now.TimeOfDay;
+        public string? IncTime { get; set; } 
 
         [Display(Name = "Summary During Incident")]
         public string? SumDuringInc { get; set; }
@@ -59,6 +59,9 @@ namespace MyHSE_Backend.Data.DbModels.LK01
 
         [Display(Name = "Department Id")]
         public Guid? DeptId { get; set; }
+
+        [Display(Name = "LTI")]
+        public bool? LTI { get; set; }
 
         [Display(Name = "Created On")]
         public DateTime? CreatedOn { get; set; }

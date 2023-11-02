@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
 using MyHSE_Backend.Data.DbModels.Settings;
 using MyHSE_Backend.Data.EF_Core;

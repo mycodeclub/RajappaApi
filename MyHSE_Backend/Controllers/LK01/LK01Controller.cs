@@ -35,7 +35,7 @@ namespace MyHSE_Backend.Controllers.User
             {
                 var result = await _incidentService.GetAllMasterData();
 
-                if (result != null )
+                if (result != null)
                     return Ok(result);
                 else
                     return NotFound();
@@ -50,16 +50,17 @@ namespace MyHSE_Backend.Controllers.User
         {
             try
             {
-               var  result = await _incidentService.GetAllIncidents();
-                
-                if (result != null && result.Any())
+                var result = await _incidentService.GetAllIncidents();
+
+                // if (result != null && result.Any())
+                if (result != null)
                     return Ok(result);
                 else
                     return NotFound();
             }
             catch (Exception ex) { return BadRequest(ex.Message); }
         }
-        
+
         [HttpGet("GetLK01ByRequestId")]
         public async Task<ActionResult<LK01VM>> GetLK01ByRequestId(string requestId)
         {
@@ -67,7 +68,7 @@ namespace MyHSE_Backend.Controllers.User
             try
             {
                 var result = await _incidentService.GetLK01ByRequestId(requestId);
-                if (result != null )
+                if (result != null)
                     return Ok(result);
                 else
                     return NotFound();

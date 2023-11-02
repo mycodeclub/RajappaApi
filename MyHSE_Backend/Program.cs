@@ -17,8 +17,8 @@ builder.Services.AddCors(Options =>
 {
     Options.AddPolicy(name: MyAllowSpecificOrigins,
         policy =>
-        {
-            policy.WithOrigins("https://localhost:7267/")
+         {    
+            policy.WithOrigins("*")
                 .AllowAnyHeader()
                 .AllowAnyMethod();
         });
@@ -91,4 +91,5 @@ app.UseAuthorization();
 
 app.MapControllers();
 app.UseCors(MyAllowSpecificOrigins);
+
 app.Run();

@@ -32,7 +32,8 @@ namespace MyHSE_Backend.Controllers.WorkFlow
             try
             {
                 var result = await wFApproverService.GetAllWFApprovers();
-                if (result != null && result.Any())
+                // if (result != null && result.Any())
+                if (result != null)
                     return Ok(result);
                 else
                     return NotFound();
