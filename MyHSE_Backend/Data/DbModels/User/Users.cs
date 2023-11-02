@@ -99,7 +99,7 @@ namespace MyHSE_Backend.Data.DbModels.User
 
         [Display(Name = "Land Telephone#")]
  
- string TELNR { get; set; } = string.Empty;
+         public string TELNR { get; set; } = string.Empty;
 
         [Display(Name = "Device Platform [Lookup]")]
         public string DEVICEPF { get; set; } = string.Empty;

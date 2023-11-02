@@ -17,7 +17,7 @@ namespace MyHSE_Backend.Data.DbModels.User
 
 
         [Display(Name = "Role ID")]
-        public char Role { get; set; }
+        public string Role { get; set; } = string.Empty;
 
         [Display(Name = "Business Module")]
         public string BUSMTYPE { get; set; } = string.Empty;

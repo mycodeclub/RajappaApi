@@ -25,8 +25,8 @@ namespace MyHSE_Backend.Data.DbModels.Docs
         [Display(Name = "File Type")]
         public string FILETYPE  { get; set; } = string.Empty;
 
-        [Display(Name = "File Size MB")]  public string FILESIZE
-        { get; set; } = string.Empty;
+        [Display(Name = "File Size MB")]
+        public string FILESIZE { get; set; } = string.Empty;
 
         [Display(Name = "File Path")]
         public string FILEPATH  { get; set; } = string.Empty;

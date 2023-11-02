@@ -32,9 +32,13 @@ namespace MyHSE_Backend.DataRepository.Implementation
                 var _appUser = await GetUserByEmail(LoginName);
                 response.Token = await CreateJwtToken(LoginName);
                 response.IsLoginSuccess = true;
-                response.FName = !string.IsNullOrWhiteSpace(_appUser.FNAME) ? _appUser.FNAME : response.FName;
-                response.LName = !string.IsNullOrWhiteSpace(_appUser.LNAME) ? _appUser.LNAME : response.LName;
-                response.Email = !string.IsNullOrWhiteSpace(_appUser.EMAILID) ? _appUser.EMAILID : response.Email;
+                response.FName = _appUser.FNAME;
+                response.LName = _appUser.LNAME;
+                response.Email = _appUser.EMAILID;
+                response.Mobile = _appUser.TELMB;
+
+                
+
             }
             else response.ErrorMessages = new List<string>() { "Invalid Credentials " };
             return response;

@@ -15,10 +15,10 @@ namespace MyHSE_Backend.Data.DbModels.User
 
 
         [Display(Name = "Role ID")]
-        public char Role { get; set; }
+        public string Role { get; set; } = string.Empty;
 
         [Display(Name = "Description")]
-        public char NAME  { get; set; } 
+        public string NAME  { get; set; } = string.Empty;
 
         [Display(Name = "Active [Yes/No]")]
         public bool ACTIVE  { get; set; } 

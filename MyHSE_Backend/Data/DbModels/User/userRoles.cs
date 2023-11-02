@@ -19,7 +19,7 @@ namespace MyHSE_Backend.Data.DbModels.User
 
 
         [Display(Name = "Role ID")]
-        public char ROLE { get; set; }
+        public string ROLE { get; set; } = string.Empty;
 
 
         [Display(Name = "Valid From Date")]
