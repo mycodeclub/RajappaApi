@@ -118,6 +118,8 @@ namespace MyHSE_Backend.DataRepository.Implementation
                   Header = header,
                   CommentsLst = _context.Comments.Where(c => c.RequestId.Equals(header.RequestId)).ToList(),
                   Victims = _context.Victims.Where(v => v.RequestId.Equals(header.RequestId)).ToList(),
+                  WorkFlowLogs = _context.WorkflowLog.Where(v => v.RequestId.Equals(header.RequestId)).ToList(),
+                  DocumentsLst = _context.Documents.Where(v => v.RequestID.Equals(header.RequestId)).ToList(),
               }).ToListAsync();
         }
 
@@ -143,6 +145,8 @@ namespace MyHSE_Backend.DataRepository.Implementation
                     incident.Header = Header;
                     incident.CommentsLst = _context.Comments.Where(c => c.RequestId.Equals(requestId)).ToList();
                     incident.Victims = _context.Victims.Where(v => v.RequestId.Equals(requestId)).ToList();
+                    incident.WorkFlowLogs = _context.WorkflowLog.Where(v => v.RequestId.Equals(requestId)).ToList(),
+                    incident.DocumentsLst = _context.Documents.Where(v => v.RequestID.Equals(requestId)).ToList(),
                 }
                 return incident;
             }

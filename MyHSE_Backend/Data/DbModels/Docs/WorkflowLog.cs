@@ -10,8 +10,8 @@ namespace MyHSE_Backend.Data.DbModels.Docs
         [Display(Name = "Unique ID")]
         public Guid Id { get; set; }
 
-        [Display(Name = "Workflow ID")]
-        public string WFID { get; set; } = string.Empty;
+        [Display(Name = "Request ID")]
+        public string RequestId { get; set; } 
 
         [Display(Name = "Business Object")]
         public string BUSOBJTYPE { get; set; } = string.Empty;
